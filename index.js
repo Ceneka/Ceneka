@@ -13,5 +13,10 @@ const cv_html = await renderer.parse(readme)
 //replace {{HTML_CV_CONTENT}} with html
 const output = template.replace("{{HTML_CV_CONTENT}}", cv_html)
 
+//create build folder if it doesn't exist
+if (!fs.existsSync("./build")) {
+    fs.mkdirSync("./build")
+}
+
 //write it to index.html
-fs.writeFileSync("./index.html", output)
+fs.writeFileSync("./build/index.html", output)
