@@ -4,7 +4,7 @@
 
 ### About me:
 
-Hi there 👋👋! I’m Juan a Full Stack web developer from La Plata, Province of Buenos Aires, Argentina. I have been developing for more than 20 years. I started my journey in the tech world at 11 years old assembling my first PC, at 12 years old creating simple software and at 14 my first Full Stack app with PHP, MySQL, JavaScript and Flash. Doing this professionally for more than 14 years by now.
+Hi there 👋👋! I’m Juan, a Full Stack web developer from La Plata, Province of Buenos Aires, Argentina. I have been developing for more than 20 years. I started my journey in the tech world at 11 years old assembling my first PC, at 12 years old creating simple software and at 14 my first Full Stack app with PHP, MySQL, JavaScript and Flash. Doing this professionally for more than 14 years by now.
 
 Nowadays, I mainly work planning, developing, deploying and maintaining Apps, Websites and Games with technologies and tools like React, NextJS, Node, TypeScript, MariaDB/MySQL, Redis, Google Cloud Platform, Docker among others.
 
