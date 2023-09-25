@@ -4,9 +4,68 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            property="og:title"
+            content="Zic Juan | Full Stack Web Developer"
+        />
+        <meta property="og:url" content="https://zic.ar" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:site_name"
+            content="Zic Juan | Full Stack Web Developer"
+        />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:locale:alternate" content="es_AR" />
+
         <title>Zic Juan | Full Stack Web Developer</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                color: #333;
+                background-color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 1.2rem 0 0.5rem;
+                padding: 0;
+            }
+            p {
+                margin: 0 0 1.2rem;
+                padding: 0;
+            }
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            main {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            @media print {
+                body {
+                    font-size: 12px;
+                }
+                main {
+                    max-width: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        </style>
     </head>
-    <body class="color-scheme-wrapper">
+    <body>
         <main>{{HTML_CV_CONTENT}}</main>
     </body>
 </html>
