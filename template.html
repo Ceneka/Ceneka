@@ -40,6 +40,7 @@
             p {
                 margin: 0 0 1.2rem;
                 padding: 0;
+                color: #555;
             }
             a {
                 color: #333;
@@ -61,6 +62,19 @@
                     max-width: 100%;
                     margin: 0;
                     padding: 0;
+                }
+            }
+
+            @media (prefers-color-scheme: dark) {
+                body {
+                    color: #fff;
+                    background-color: #333;
+                }
+                a {
+                    color: #fff;
+                }
+                p {
+                    color: #ccc;
                 }
             }
         </style>
