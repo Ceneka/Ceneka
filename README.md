@@ -12,7 +12,7 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 
 *   **Programing Languages:** TypeScript, PHP
 *   **Technologies:** React, NodeJS, Express, NextJS, Laravel, MariaDB/MySQL, Redis, Docker, Google Cloud Platform, Bash, Linux, Git, CSS
-*   **Idioms:** English and Spanish
+*   **Languages:** English (B2) and Spanish (native)
 
 ### Experience:
 
