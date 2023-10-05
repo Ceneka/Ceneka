@@ -6,54 +6,97 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             property="og:title"
-            content="Zic Juan | Full Stack Web Developer"
+            content="Zic Juan | Senior Full Stack Web Developer"
         />
         <meta property="og:url" content="https://zic.ar" />
         <meta property="og:type" content="website" />
         <meta
             property="og:site_name"
-            content="Zic Juan | Full Stack Web Developer"
+            content="Zic Juan | Senior Full Stack Web Developer"
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:locale:alternate" content="es_AR" />
 
-        <title>Zic Juan | Full Stack Web Developer</title>
+        <title>Zic Juan | Senior Full Stack Web Developer</title>
         <style>
+            /* Color Variables */
+            :root {
+                --primary-bg-color: #fff;
+                --primary-text-color: #333;
+                --link-color: #333;
+                --link-hover-color: #ff5733;
+                --paragraph-color: #555;
+                --background-dark: #333;
+                --text-dark: #fff;
+                --paragraph-dark: #ccc;
+            }
+
+            /* Modern CSS Reset */
             body {
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 16px;
                 line-height: 1.5;
-                color: #333;
-                background-color: #fff;
+                color: var(--primary-text-color);
+                background-color: var(--primary-bg-color);
                 margin: 0;
                 padding: 0;
+                transition: background-color 0.3s, color 0.3s;
             }
+
+            /* Heading Styles with Hover Effect */
             h1,
             h2,
             h3,
             h4,
             h5,
             h6 {
-                margin: 1.2rem 0 0.5rem;
+                margin: 2rem 0 0.5rem;
                 padding: 0;
+                transition: color 0.3s;
             }
+
+            h2 {
+                font-size: 2rem;
+                margin: 2rem 0 2rem;
+                font-weight: 700;
+            }
+
+            h1:hover,
+            h2:hover,
+            h3:hover,
+            h4:hover,
+            h5:hover,
+            h6:hover {
+                color: var(--link-hover-color);
+            }
+
+            /* Paragraph Styles */
             p {
                 margin: 0 0 1.2rem;
                 padding: 0;
-                color: #555;
+                color: var(--paragraph-color);
             }
+
+            /* Link Styles with Hover Effect */
             a {
-                color: #333;
+                color: var(--link-color);
                 text-decoration: none;
+                transition: color 0.3s;
             }
+
             a:hover {
                 text-decoration: underline;
+                color: var(--link-hover-color);
             }
+
+            /* Main Content Container */
             main {
                 max-width: 800px;
                 margin: 0 auto;
                 padding: 20px;
             }
+
+            /* Print Styles */
             @media print {
                 body {
                     font-size: 12px;
@@ -65,16 +108,18 @@
                 }
             }
 
+            /* Dark Mode Styles */
             @media (prefers-color-scheme: dark) {
                 body {
-                    color: #fff;
-                    background-color: #333;
+                    color: var(--text-dark);
+                    background-color: var(--background-dark);
+                    transition: background-color 0.3s, color 0.3s;
                 }
                 a {
-                    color: #fff;
+                    color: var(--text-dark);
                 }
                 p {
-                    color: #ccc;
+                    color: var(--paragraph-dark);
                 }
             }
         </style>
