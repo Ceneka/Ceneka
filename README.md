@@ -1,4 +1,4 @@
-## Zic Juan - Full Stack Web Developer
+## Zic Juan | Senior Full Stack Web Developer
 
 [jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
 
@@ -11,7 +11,7 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 ### Main Skills:
 
 *   **Programing Languages:** TypeScript, PHP
-*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, MariaDB/MySQL, Redis, Docker, Google Cloud Platform, Bash, Linux, Git, CSS
+*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Analytics
 *   **Languages:** English (B2) and Spanish (native)
 
 ### Experience:
@@ -20,19 +20,23 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 
 _September 2021 - May 2023 (1 year 9 months)_
 
-Initially, I was responsible for the entire platform design, development and deployment. It consists of real-time Chess games, with spectator mode, tournaments, duels, consumables, shop, internal marketplace, integration with Web3. I managed all the monitoring  and got involved in the feedback from users. I also helped on the hiring processes of new developers to join the team, doing some training, delegating and collaborating with them and reviewing their job.
+Initially, I was responsible for the entire platform architecture design and software development and deployment. It consists of real-time Chess games, with live spectator mode, tournaments, duels, consumables, shop, internal marketplace, integration with Web3.
+
+I developed the Frontend with React and chess.js, with a 4ms re-render time per move, achieving an excellent and fast gaming experience even on outdated mobile devices. I used websocket to connect the client to a stateless server (that can scale automatically) and keep states of the games in a Redis instance.
+
+I managed all the monitoring and got involved in the feedback from users. I also helped on the hiring processes of new developers to join the team, doing some training, delegating and collaborating with them and reviewing their job.
 
 #### **Freelance Software Engineering at GeekWallet**
 
 _April 2019 - December 2020 (1 year 8 months)_
 
-Development of a payment gateway for users in Paraguay, with payments with cell phone credit and creation and maintenance of SDKs for PHP and NodeJS. Developed with React, Laravel and MariaDB and deployed on Google Cloud Platform
+Development of a payment gateway for users in Paraguay, with payments with cell phone credit and creation and maintenance of SDKs for PHP and NodeJS. I Developed it with React, Laravel and MariaDB and deployed on Google Cloud Platform.
 
 #### **Full Stack Developer and Owner of Ceneka (ceneka.net)**
 
 _2015 - Present (8 years)_
 
-Ceneka is a platform that facilitates the financing of content creator projects from Argentina and other LATAM countries, adding interaction to their creations. I developed it in PHP, MySQL, JQuery and Bootstrap on a self managed VPS. With more than 80.000 users and more than 2 million USD in donations.
+Ceneka is a platform that facilitates the financing of content creator projects from Argentina and other LATAM countries, adding interaction to their creations. I developed it in PHP, MySQL, JQuery and Bootstrap on a self managed Linux VPS. With more than 80.000 users and more than 2 million USD in donations.
 
 #### **Lead Programmer at Shoor Games (shoor.itch.io)**
 
@@ -40,11 +44,15 @@ _March 2013 - July 2019 (6 years 5 months)_
 
 Web & Game Development on an Argentinian Startup. With games launched on Steam and other platforms. Used technologies like Unity, GameMaker, Godot, PHP among others.
 
+Examples: [My Tower, My Home](https://store.steampowered.com/app/435600/My_Tower_My_Home/) | [80 Boxes](https://shoor.itch.io/80boxes) | [Guitar Scales App](https://ceneka.net/escalas/)
+
 #### **Freelancer Web Developer**
 
 _March 2007 - Present_
 
 I created a lot of landing pages and blogs with Wordpress, created plugins, maintained and optimized them. I also created administrative software for an educational institution that managed students, debtor monitoring, communication with parents, etc.
+
+Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo](https://sapie.com.ar) 
 
 ### Reach me out:
 
