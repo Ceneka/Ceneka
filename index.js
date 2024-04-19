@@ -18,5 +18,8 @@ if (!fs.existsSync("./build")) {
     fs.mkdirSync("./build")
 }
 
+//copy all files in public to build
+fs.cpSync("./public", "./build", { recursive: true })
+
 //write it to index.html
 fs.writeFileSync("./build/index.html", output)
