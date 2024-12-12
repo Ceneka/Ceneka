@@ -16,6 +16,19 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 
 ### Experience:
 
+#### Senior Software Engineer / Consultant
+
+_May 2023 – Present_  
+
+- Contribute to a fintech startup focused on enabling worldwide donations through innovative and scalable solutions.  
+- Develop and maintain web applications using Laravel and Livewire, delivering secure and efficient platforms for users.  
+- Lead DevOps initiatives, including Docker-based containerization, Linux server administration, and managing VMs and services on AWS for seamless deployments.  
+- Collaborate on modernizing legacy systems and integrating them with new technologies to ensure reliability and adaptability.  
+- Work in a collaborative team environment, engaging in project planning, code reviews, and mentoring team members.  
+- Provide tailored consulting services, from system architecture design to deployment and optimization strategies.  
+
+Software
+
 #### **Senior Software Engineering / Tech Leader at DChess (dchess.net)**
 
 _September 2021 - May 2023 (1 year 9 months)_
