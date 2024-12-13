@@ -27,8 +27,6 @@ _May 2023 – Present_
 - Work in a collaborative team environment, engaging in project planning, code reviews, and mentoring team members.  
 - Provide tailored consulting services, from system architecture design to deployment and optimization strategies.  
 
-Software
-
 #### **Senior Software Engineering / Tech Leader at DChess (dchess.net)**
 
 _September 2021 - May 2023 (1 year 9 months)_
