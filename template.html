@@ -1,131 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name=description content="Zic Juan | Senior Full Stack Web Developer" />
-        <meta
-            property="og:title"
-            content="Zic Juan | Senior Full Stack Web Developer"
-        />
-        <meta property="og:url" content="https://zic.ar" />
-        <meta property="og:type" content="website" />
-        <meta
-            property="og:site_name"
-            content="Zic Juan | Senior Full Stack Web Developer"
-        />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="es_AR" />
 
-        <title>Zic Juan | Senior Full Stack Web Developer</title>
-        <style>
-            /* Color Variables */
-            :root {
-                --primary-bg-color: #fff;
-                --primary-text-color: #333;
-                --link-color: #333;
-                --link-hover-color: #ff5733;
-                --paragraph-color: #555;
-                --background-dark: #333;
-                --text-dark: #fff;
-                --paragraph-dark: #ccc;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name=description content="Zic Juan | Senior Full Stack Web Developer" />
+    <meta property="og:title" content="Zic Juan | Senior Full Stack Web Developer" />
+    <meta property="og:url" content="https://zic.ar" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zic Juan | Senior Full Stack Web Developer" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_AR" />
 
-            /* Modern CSS Reset */
+    <title>Zic Juan | Senior Full Stack Web Developer</title>
+    <style>
+        /* Modern Color Variables using HSL */
+        :root {
+            --primary-bg-color: hsl(0, 0%, 100%);
+            --primary-text-color: hsl(220, 13%, 18%);
+            --accent-color: hsl(210, 100%, 56%);
+            --accent-hover: hsl(210, 100%, 46%);
+            --surface-color: hsl(0, 0%, 98%);
+            --border-color: hsl(0, 0%, 88%);
+            --paragraph-color: hsl(220, 13%, 30%);
+            --background-dark: hsl(220, 13%, 18%);
+            --text-dark: hsl(0, 0%, 95%);
+            --paragraph-dark: hsl(0, 0%, 75%);
+        }
+
+        /* Modern Font Stack and Vertical Rhythm */
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--primary-text-color);
+            background-color: var(--primary-bg-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Improved Heading Hierarchy */
+        h2 {
+            font-size: 2.25rem;
+            margin: 3rem 0 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+            color: var(--primary-text-color);
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Enhanced Link Styling */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease, background-color 0.2s ease;
+            padding: 0.15rem 0.25rem;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            background-color: hsla(210, 100%, 56%, 0.1);
+            text-decoration: none;
+        }
+
+        /* Modern Paragraph Styling */
+        p {
+            margin: 0 0 1.5rem;
+            color: var(--paragraph-color);
+            max-width: 65ch;
+        }
+
+        /* List Improvements */
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0 2rem;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        li::before {
+            content: '•';
+            position: absolute;
+            left: -0.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* Experience Section Styling */
+        h4+p {
+            margin: 0.5rem 0 1rem;
+            color: var(--paragraph-color);
+            font-size: 0.95em;
+        }
+
+        h4+p em {
+            display: inline-block;
+            background: hsla(210, 100%, 56%, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-style: normal;
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
             body {
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 16px;
-                line-height: 1.5;
-                color: var(--primary-text-color);
-                background-color: var(--primary-bg-color);
-                margin: 0;
-                padding: 0;
-                transition: background-color 0.3s, color 0.3s;
-            }
-
-            /* Heading Styles with Hover Effect */
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                margin: 2rem 0 0.5rem;
-                padding: 0;
-                transition: color 0.3s;
+                font-size: 0.95rem;
             }
 
             h2 {
-                font-size: 2rem;
-                margin: 2rem 0 2rem;
-                font-weight: 700;
+                font-size: 1.75rem;
+                margin: 2rem 0 1.5rem;
             }
 
-            h1:hover,
-            h2:hover,
-            h3:hover,
-            h4:hover,
-            h5:hover,
-            h6:hover {
-                color: var(--link-hover-color);
+            main {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Dark Mode Enhancements */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-bg-color: var(--background-dark);
+                --primary-text-color: var(--text-dark);
+                --paragraph-color: var(--paragraph-dark);
+                --surface-color: hsl(220, 13%, 15%);
+                --border-color: hsl(220, 13%, 25%);
             }
 
-            /* Paragraph Styles */
-            p {
-                margin: 0 0 1.2rem;
-                padding: 0;
-                color: var(--paragraph-color);
-            }
-
-            /* Link Styles with Hover Effect */
             a {
-                color: var(--link-color);
-                text-decoration: none;
-                transition: color 0.3s;
+                color: hsl(210, 100%, 75%);
             }
 
             a:hover {
-                text-decoration: underline;
-                color: var(--link-hover-color);
+                background-color: hsla(210, 100%, 75%, 0.1);
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                font-size: 12px;
+                line-height: 1.4;
             }
 
-            /* Main Content Container */
             main {
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
+                padding: 0;
+                max-width: 100%;
             }
 
-            /* Print Styles */
-            @media print {
-                body {
-                    font-size: 12px;
-                }
-                main {
-                    max-width: 100%;
-                    margin: 0;
-                    padding: 0;
-                }
+            a {
+                color: var(--primary-text-color);
+                text-decoration: underline;
             }
 
-            /* Dark Mode Styles */
-            @media (prefers-color-scheme: dark) {
-                body {
-                    color: var(--text-dark);
-                    background-color: var(--background-dark);
-                    transition: background-color 0.3s, color 0.3s;
-                }
-                a {
-                    color: var(--text-dark);
-                }
-                p {
-                    color: var(--paragraph-dark);
-                }
+            h2::after {
+                background: #666;
             }
-        </style>
-    </head>
-    <body>
-        <main>{{HTML_CV_CONTENT}}</main>
-    </body>
+        }
+    </style>
+</head>
+
+<body>
+    <main>{{HTML_CV_CONTENT}}</main>
+</body>
+
 </html>
