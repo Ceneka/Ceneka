@@ -20,12 +20,9 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 
 _May 2023 – Present_  
 
-- Contribute to a fintech startup focused on enabling worldwide donations through innovative and scalable solutions.  
-- Develop and maintain web applications using Laravel and Livewire, delivering secure and efficient platforms for users.  
-- Lead DevOps initiatives, including Docker-based containerization, Linux server administration, and managing VMs and services on AWS for seamless deployments.  
-- Collaborate on modernizing legacy systems and integrating them with new technologies to ensure reliability and adaptability.  
-- Work in a collaborative team environment, engaging in project planning, code reviews, and mentoring team members.  
-- Provide tailored consulting services, from system architecture design to deployment and optimization strategies.  
+I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives—including Docker-based containerization, Linux server administration, and managing AWS VMs and services—to ensure seamless deployments.
+
+Additionally, I collaborated on modernizing legacy systems by integrating new technologies that enhanced reliability and adaptability. I also played an active role in project planning, participated in code reviews, and mentored team members, all while providing tailored consulting services from system architecture design to deployment and optimization strategies.
 
 #### **Senior Software Engineering / Tech Leader at DChess (dchess.net)**
 
@@ -61,7 +58,9 @@ Examples: [My Tower, My Home](https://store.steampowered.com/app/435600/My_Tower
 
 _March 2007 - Present_
 
-I created a lot of landing pages and blogs with Wordpress, created plugins, maintained and optimized them. I also created administrative software for an educational institution that managed students, debtor monitoring, communication with parents, etc.
+I created numerous landing pages and blogs using WordPress, developed custom plugins, and consistently maintained and optimized these sites. I also built administrative software for an educational institution that streamlined student management, monitored debtor activity, and facilitated effective communication with parents.
+
+In addition, I provide ongoing maintenance for live sites—including WordPress, OJS, and custom platforms—ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
 
 Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo](https://sapie.com.ar) 
 
