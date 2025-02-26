@@ -64,6 +64,10 @@ In addition, I provide ongoing maintenance for live sites—including WordPress,
 
 Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo](https://sapie.com.ar) 
 
+#### My Own
+
+[Afin.ar](https://afin.ar): A simple Guitar Tuner App (React, Next, Cloudflare Pages)
+
 ### Reach me out:
 
 [jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
