@@ -14,6 +14,7 @@
     <meta property="og:image" content="https://zic.ar/images/og-image.jpg" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="es_AR" />
+    <meta name="theme-color" content="#0f0c29" />
 
     <!-- Twitter Card Data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -61,6 +62,7 @@
             background-size: cover;
             position: relative;
             overflow-x: hidden;
+            will-change: background-position;
         }
 
         /* Space particles effect */
@@ -146,6 +148,7 @@
             text-shadow: 0 0 5px var(--glow-color);
             position: relative;
             overflow: hidden;
+            will-change: transform, opacity;
         }
 
         h3::before {
@@ -182,6 +185,7 @@
             transition: color var(--animation-duration) ease;
             position: relative;
             padding-left: 1.5rem;
+            will-change: transform, opacity;
         }
 
         h4::before {
@@ -264,6 +268,7 @@
             transition: all var(--animation-duration) ease;
             padding: 0.5rem 0;
             text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            will-change: transform, opacity;
         }
 
         p:hover {
@@ -282,6 +287,7 @@
             border-radius: 8px;
             border: 1px solid var(--border-color);
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+            will-change: transform, opacity;
         }
 
         li {
@@ -461,6 +467,11 @@
                 margin: 1rem;
                 border-radius: 12px;
             }
+
+            /* Disable particle animation on mobile for better performance */
+            body::before {
+                display: none;
+            }
         }
 
         /* Light Mode Toggle for Print */
@@ -587,14 +598,18 @@
             
             // Add subtle parallax effect on mouse move
             document.addEventListener('mousemove', function(e) {
-                const moveX = (e.clientX - window.innerWidth / 2) / 50;
-                const moveY = (e.clientY - window.innerHeight / 2) / 50;
-                
-                document.querySelectorAll('h3, h4').forEach(el => {
-                    el.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
-                });
-                
-                document.body.style.backgroundPosition = `${moveX * -2}px ${moveY * -2}px`;
+                if (!window.ticking) {
+                    window.requestAnimationFrame(function() {
+                        const moveX = (e.clientX - window.innerWidth / 2) / 50;
+                        const moveY = (e.clientY - window.innerHeight / 2) / 50;
+                        document.querySelectorAll('h3, h4').forEach(el => {
+                            el.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+                        });
+                        document.body.style.backgroundPosition = `${moveX * -2}px ${moveY * -2}px`;
+                        window.ticking = false;
+                    });
+                    window.ticking = true;
+                }
             });
         });
     </script>
