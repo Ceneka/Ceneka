@@ -20,139 +20,435 @@
     <meta name="twitter:title" content="Zic Juan | Senior Full Stack Web Developer">
     <meta name="twitter:description" content="Senior Full Stack Developer creating robust web solutions. Check out my portfolio.">
 
-<title>Zic Juan | Senior Full Stack Web Developer</title>
-
     <title>Zic Juan | Senior Full Stack Web Developer</title>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Modern Color Variables using HSL */
+        /* Futuristic Space-Inspired Color Variables */
         :root {
-            --primary-bg-color: hsl(0, 0%, 100%);
-            --primary-text-color: hsl(220, 13%, 18%);
-            --accent-color: hsl(210, 100%, 56%);
-            --accent-hover: hsl(210, 100%, 46%);
-            --surface-color: hsl(0, 0%, 98%);
-            --border-color: hsl(0, 0%, 88%);
-            --paragraph-color: hsl(220, 13%, 30%);
-            --background-dark: hsl(220, 13%, 18%);
+            --primary-bg-color: hsl(240, 15%, 10%);
+            --primary-text-color: hsl(0, 0%, 95%);
+            --accent-color: hsl(210, 100%, 65%);
+            --accent-hover: hsl(180, 100%, 60%);
+            --surface-color: hsla(240, 15%, 15%, 0.7);
+            --border-color: hsla(210, 100%, 70%, 0.2);
+            --paragraph-color: hsl(210, 15%, 70%);
+            --background-dark: hsl(240, 20%, 8%);
             --text-dark: hsl(0, 0%, 95%);
-            --paragraph-dark: hsl(0, 0%, 75%);
+            --paragraph-dark: hsl(210, 15%, 70%);
+            --glow-color: hsla(180, 100%, 75%, 0.6);
+            --card-shadow: 0 8px 32px rgba(0, 200, 255, 0.1);
+            --header-gradient: linear-gradient(135deg, #12c2e9, #c471ed, #f64f59);
+            --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --skill-gradient: linear-gradient(135deg, hsla(210, 100%, 30%, 0.4), hsla(270, 100%, 30%, 0.4));
+            --skill-gradient-hover: linear-gradient(135deg, hsla(210, 100%, 40%, 0.6), hsla(270, 100%, 40%, 0.6));
+            --timeline-color: var(--accent-color);
+            --animation-duration: 0.4s;
         }
 
-        /* Modern Font Stack and Vertical Rhythm */
+        /* Space-inspired Background and Typography */
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             font-size: 1rem;
             line-height: 1.6;
             color: var(--primary-text-color);
-            background-color: var(--primary-bg-color);
+            background: var(--bg-gradient);
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Improved Heading Hierarchy */
+        /* Space particles effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at 20% 30%, hsla(180, 100%, 80%, 0.05) 0.1%, transparent 0.5%),
+                radial-gradient(circle at 50% 40%, hsla(210, 100%, 80%, 0.03) 0.1%, transparent 0.5%),
+                radial-gradient(circle at 80% 10%, hsla(270, 100%, 80%, 0.05) 0.1%, transparent 0.5%),
+                radial-gradient(circle at 10% 60%, hsla(300, 100%, 80%, 0.03) 0.1%, transparent 0.5%),
+                radial-gradient(circle at 30% 70%, hsla(240, 100%, 80%, 0.03) 0.1%, transparent 0.5%),
+                radial-gradient(circle at 70% 90%, hsla(195, 100%, 80%, 0.03) 0.1%, transparent 0.5%);
+            background-size: 600px 600px, 500px 500px, 600px 600px, 700px 700px, 400px 400px, 600px 600px;
+            animation: particleMovement 120s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes particleMovement {
+            0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 600px 600px, 500px 500px, 600px 600px, 700px 700px, 400px 400px, 600px 600px; }
+        }
+
+        /* Futuristic Heading Styling */
         h2 {
-            font-size: 2.25rem;
-            margin: 3rem 0 1.5rem;
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 0 0 2rem;
             font-weight: 700;
             letter-spacing: -0.025em;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding: 1.5rem 0;
+            color: transparent;
+            background: var(--header-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradientText 8s ease infinite;
+            background-size: 300% 300%;
+            text-shadow: 0 0 10px hsla(210, 100%, 60%, 0.2);
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h2::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
             height: 3px;
-            background: var(--accent-color);
-            border-radius: 2px;
+            background: var(--header-gradient);
+            border-radius: 4px;
+            animation: gradientBorder 8s ease infinite;
+            background-size: 300% 300%;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; width: 60px; }
+            50% { background-position: 100% 50%; width: 120px; }
+            100% { background-position: 0% 50%; width: 60px; }
         }
 
         h3 {
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem;
+            font-size: 1.75rem;
+            margin: 3rem 0 1.5rem;
             font-weight: 600;
-            color: var(--primary-text-color);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0 8px 8px 0;
+            background: linear-gradient(90deg, hsla(210, 100%, 30%, 0.2), transparent);
+            transition: all var(--animation-duration) ease;
+            text-shadow: 0 0 5px var(--glow-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--glow-color);
+            animation: pulse 3s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        h3:hover {
+            transform: translateX(5px);
+            background: linear-gradient(90deg, hsla(210, 100%, 30%, 0.3), transparent 80%);
         }
 
         h4 {
-            font-size: 1.25rem;
-            margin: 1.5rem 0 0.75rem;
-            font-weight: 500;
+            font-size: 1.35rem;
+            margin: 2rem 0 0.75rem;
+            font-weight: 600;
+            color: var (--accent-color);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            transition: color var(--animation-duration) ease;
+            position: relative;
+            padding-left: 1.5rem;
         }
 
-        /* Enhanced Link Styling */
+        h4::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            opacity: 0.7;
+            transition: all var(--animation-duration) ease;
+        }
+
+        h4:hover::before {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--accent-hover);
+        }
+
+        /* Futuristic Link Styling with Glow Effect */
         a {
             color: var(--accent-color);
             text-decoration: none;
-            transition: color 0.2s ease, background-color 0.2s ease;
-            padding: 0.15rem 0.25rem;
+            transition: all 0.3s ease;
+            padding: 0.4rem 0.8rem;
             border-radius: 4px;
+            position: relative;
+            z-index: 1;
+            background: hsla(210, 100%, 30%, 0.1);
+            border: 1px solid hsla(210, 100%, 60%, 0.1);
+            margin: 0 0.2rem;
+            display: inline-flex;
+            align-items: center;
         }
 
         a:hover {
-            color: var(--accent-hover);
-            background-color: hsla(210, 100%, 56%, 0.1);
-            text-decoration: none;
+            color: white;
+            box-shadow: 0 0 10px var(--glow-color);
+            border-color: hsla(210, 100%, 60%, 0.4);
+            background: hsla(210, 100%, 30%, 0.2);
+            transform: translateY(-2px);
         }
 
-        /* Modern Paragraph Styling */
+        /* Add icons to links automatically */
+        a[href^="mailto:"]::before {
+            content: "\f0e0";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        a[href^="https://linkedin"]::before {
+            content: "\f08c";
+            font-family: "Font Awesome 6 Brands";
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        a[href^="https://github"]::before {
+            content: "\f09b";
+            font-family: "Font Awesome 6 Brands";
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        a[href^="https://"]::before {
+            content: "\f0ac";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Futuristic Paragraph Styling */
         p {
             margin: 0 0 1.5rem;
             color: var(--paragraph-color);
-            max-width: 65ch;
+            max-width: 85ch;
+            line-height: 1.8;
+            transition: all var(--animation-duration) ease;
+            padding: 0.5rem 0;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* List Improvements */
+        p:hover {
+            color: var(--primary-text-color);
+        }
+
+        /* Futuristic Skills Section */
         ul {
-            padding-left: 1.5rem;
-            margin: 1rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
             list-style: none;
+            background: hsla(240, 15%, 15%, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
         li {
-            margin-bottom: 0.75rem;
+            background: var(--skill-gradient);
+            color: var(--primary-text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all var(--animation-duration) ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
             position: relative;
-            padding-left: 1rem;
+            overflow: hidden;
         }
 
         li::before {
-            content: '•';
+            content: '';
             position: absolute;
-            left: -0.5rem;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, hsla(210, 100%, 70%, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px var(--glow-color);
+            background: var(--skill-gradient-hover);
+            border-color: hsla(210, 100%, 70%, 0.3);
+        }
+
+        li:hover::before {
+            transform: translateX(100%);
+        }
+
+        li strong {
             color: var(--accent-color);
-            font-weight: 700;
+            font-weight: 600;
+            text-shadow: 0 0 3px hsla(210, 100%, 30%, 0.5);
         }
 
         /* Experience Section Styling */
         h4+p {
-            margin: 0.5rem 0 1rem;
+            margin: 0.5rem 0 1.5rem;
             color: var(--paragraph-color);
             font-size: 0.95em;
+            padding-left: 1.5rem;
+            border-left: 2px solid hsla(210, 100%, 50%, 0.3);
+            transition: all var(--animation-duration) ease;
+            position: relative;
+        }
+
+        h4+p::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -0.5rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 8px var(--glow-color);
+            opacity: 0;
+            transform: scale(0);
+            transition: all var(--animation-duration) ease;
+        }
+
+        h4+p:hover {
+            border-left-color: var(--accent-color);
+            padding-left: 2rem;
+        }
+
+        h4+p:hover::before {
+            opacity: 1;
+            transform: scale(1);
         }
 
         h4+p em {
             display: inline-block;
-            background: hsla(210, 100%, 56%, 0.1);
-            padding: 0.25rem 0.5rem;
+            background: hsla(210, 100%, 30%, 0.2);
+            padding: 0.25rem 0.75rem;
             border-radius: 4px;
             font-style: normal;
+            color: var(--accent-color);
+            border: 1px solid hsla(210, 100%, 70%, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Main Content Container */
+        /* Main Content Container with Glassmorphism */
         main {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
+            max-width: 920px;
+            margin: 3rem auto;
+            padding: 3rem 2rem;
+            background: hsla(240, 15%, 12%, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 200, 255, 0.1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, hsla(180, 100%, 80%, 0.03), hsla(210, 100%, 80%, 0.01), hsla(270, 100%, 80%, 0.03));
+            z-index: -1;
+        }
+
+        main::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--header-gradient);
+            background-size: 300% 300%;
+            animation: gradientBorder 8s ease infinite;
+        }
+
+        /* Futuristic Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: hsla(240, 15%, 10%, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-color), var(--accent-hover));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--accent-hover), var(--accent-color));
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px hsla(180, 100%, 75%, 0.3); }
+            50% { box-shadow: 0 0 20px hsla(180, 100%, 75%, 0.6); }
+            100% { box-shadow: 0 0 5px hsla(180, 100%, 75%, 0.3); }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
                 font-size: 0.95rem;
+                background-attachment: scroll;
             }
 
             h2 {
@@ -161,48 +457,80 @@
             }
 
             main {
-                padding: 1.5rem 1rem;
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+                border-radius: 12px;
             }
         }
 
-        /* Dark Mode Enhancements */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-bg-color: var(--background-dark);
-                --primary-text-color: var(--text-dark);
-                --paragraph-color: var(--paragraph-dark);
-                --surface-color: hsl(220, 13%, 15%);
-                --border-color: hsl(220, 13%, 25%);
-            }
-
-            a {
-                color: hsl(210, 100%, 75%);
-            }
-
-            a:hover {
-                background-color: hsla(210, 100%, 75%, 0.1);
-            }
-        }
-
-        /* Print Styles */
+        /* Light Mode Toggle for Print */
         @media print {
+            :root {
+                --primary-bg-color: white;
+                --primary-text-color: black;
+                --paragraph-color: #333;
+                --accent-color: #0066cc;
+                --border-color: #ddd;
+            }
+
             body {
-                font-size: 12px;
-                line-height: 1.4;
+                background: white;
+                color: black;
+            }
+
+            body::before {
+                display: none;
             }
 
             main {
+                box-shadow: none;
+                background: white;
+                margin: 0;
                 padding: 0;
                 max-width: 100%;
+                border: none;
+            }
+
+            main::before, main::after {
+                display: none;
+            }
+
+            h2 {
+                color: black;
+                -webkit-text-fill-color: initial;
+                text-shadow: none;
+            }
+
+            h3, h4 {
+                color: #0066cc;
+                text-shadow: none;
+            }
+
+            h3::before, h4::before {
+                display: none;
             }
 
             a {
-                color: var(--primary-text-color);
+                color: #0066cc;
                 text-decoration: underline;
+                background: none;
+                box-shadow: none;
+                border: none;
+                padding: 0;
             }
 
-            h2::after {
-                background: #666;
+            a::before {
+                display: none;
+            }
+
+            li {
+                background: none;
+                border: 1px solid #ddd;
+                box-shadow: none;
+            }
+
+            li::before {
+                display: none;
             }
         }
     </style>
@@ -210,6 +538,66 @@
 
 <body>
     <main>{{HTML_CV_CONTENT}}</main>
+
+    <script>
+        // Animation on scroll with staggered effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup the Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add staggered delay based on index
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateX(0)';
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            // Target all elements that should animate
+            const animatedElements = document.querySelectorAll('h3, h4, p, ul');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateX(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Fix for date formatting in headings
+            document.querySelectorAll('h4').forEach(heading => {
+                const text = heading.textContent;
+                if (text.includes('_')) {
+                    const parts = text.split('_');
+                    if (parts.length >= 3) {
+                        const title = parts[0].trim();
+                        const period = parts.slice(1, -1).join('_').trim();
+                        
+                        heading.innerHTML = `${title} <em>${period}</em>`;
+                    }
+                }
+            });
+            
+            // Floating animation for skills
+            const skills = document.querySelectorAll('li');
+            skills.forEach((skill, index) => {
+                skill.style.animationDelay = `${index * 0.1}s`;
+                skill.style.animation = `glowPulse 4s infinite ${index * 0.5}s`;
+            });
+            
+            // Add subtle parallax effect on mouse move
+            document.addEventListener('mousemove', function(e) {
+                const moveX = (e.clientX - window.innerWidth / 2) / 50;
+                const moveY = (e.clientY - window.innerHeight / 2) / 50;
+                
+                document.querySelectorAll('h3, h4').forEach(el => {
+                    el.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+                });
+                
+                document.body.style.backgroundPosition = `${moveX * -2}px ${moveY * -2}px`;
+            });
+        });
+    </script>
 </body>
 
 </html>

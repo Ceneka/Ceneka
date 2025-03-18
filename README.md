@@ -66,8 +66,12 @@ Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Serpientes Argentin
 
 #### My Own
 
-[Afin.ar](https://afin.ar): A simple Guitar Tuner App (React, Next, Cloudflare Pages)
+_Tools_
+
+[Afin.ar](https://afin.ar): A Guitar Tuner App, Metronome, Scale, and more (Fully static PWA app with React, Next, Cloudflare Pages)
+
+[LazyBackup](https://github.com/Ceneka/lazybackup/): web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.a web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.
 
 ### Reach me out:
 
-[jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
+[jzic@outlook.com](mailto:jzic@outlook.com) [LinkedIn.com/in/zic](https://linkedin.com/in/zic) [zic.ar](https://zic.ar) [Github.com/ceneka](https://github.com/ceneka)
