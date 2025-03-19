@@ -595,22 +595,7 @@
                 skill.style.animationDelay = `${index * 0.1}s`;
                 skill.style.animation = `glowPulse 4s infinite ${index * 0.5}s`;
             });
-            
-            // Add subtle parallax effect on mouse move
-            document.addEventListener('mousemove', function(e) {
-                if (!window.ticking) {
-                    window.requestAnimationFrame(function() {
-                        const moveX = (e.clientX - window.innerWidth / 2) / 50;
-                        const moveY = (e.clientY - window.innerHeight / 2) / 50;
-                        document.querySelectorAll('h3, h4').forEach(el => {
-                            el.style.transform = `translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
-                        });
-                        document.body.style.backgroundPosition = `${moveX * -2}px ${moveY * -2}px`;
-                        window.ticking = false;
-                    });
-                    window.ticking = true;
-                }
-            });
+        
         });
     </script>
 </body>
