@@ -1,4 +1,4 @@
-## Zic Juan | Senior Full Stack Web Developer
+## Zic Juan ♦ Senior Full Stack Web Developer
 
 [jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
 
@@ -10,9 +10,9 @@ Nowadays, I mainly work planning, developing, deploying and maintaining Apps, We
 
 ### Main Skills:
 
-*   **Programing Languages:** TypeScript, PHP
-*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Analytics
-*   **Languages:** English (B2) and Spanish (native)
+*   **Programing Languages:** JavaScript, TypeScript, PHP
+*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, Livewire, Tailwind, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Jira, Analytics
+*   **Languages:** English (B2), Spanish (native)
 
 ### Experience:
 
@@ -74,4 +74,4 @@ _Tools_
 
 ### Reach me out:
 
-[jzic@outlook.com](mailto:jzic@outlook.com) [LinkedIn.com/in/zic](https://linkedin.com/in/zic) [zic.ar](https://zic.ar) [Github.com/ceneka](https://github.com/ceneka)
+[jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
