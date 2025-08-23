@@ -8,6 +8,8 @@ Hi there 👋👋! I’m Juan, a Full Stack web developer from La Plata, Provinc
 
 Nowadays, I mainly work planning, developing, deploying and maintaining Apps, Websites and Games with technologies and tools like React, NextJS, Node, TypeScript, MariaDB/MySQL, Redis, Google Cloud Platform, Docker among others.
 
+I thrive across the full stack—from infrastructure to polished frontends. I enjoy planning systems end‑to‑end, provisioning Linux VMs and cloud resources (GCP, AWS), containerizing with Docker, automating CI/CD and zero‑downtime deployments, wiring logs/metrics/alerts for real observability, and running reliable self‑hosted setups when it makes sense. On the frontend, I obsess over performance and delightful UX (especially game‑like interfaces), turning complex real‑time behavior into fast, intuitive experiences. I’m hands‑on, pragmatic, and collaborative—owning outcomes, removing blockers, and raising the bar for the team.
+
 ### Main Skills:
 
 *   **Programing Languages:** JavaScript, TypeScript, PHP
