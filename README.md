@@ -62,7 +62,7 @@ I created numerous landing pages and blogs using WordPress, developed custom plu
 
 In addition, I provide ongoing maintenance for live sites—including WordPress, OJS, and custom platforms—ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
 
-Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](lajsba.sedimentologia.org.ar) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo Escolar](https://sapie.com.ar)
+Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](https://lajsba.sedimentologia.org.ar) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo Escolar](https://sapie.com.ar)
 
 #### My Own
 
