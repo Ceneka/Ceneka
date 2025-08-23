@@ -62,15 +62,17 @@ I created numerous landing pages and blogs using WordPress, developed custom plu
 
 In addition, I provide ongoing maintenance for live sites—including WordPress, OJS, and custom platforms—ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
 
-Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo](https://sapie.com.ar) 
+Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](lajsba.sedimentologia.org.ar) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo Escolar](https://sapie.com.ar)
 
 #### My Own
 
-_Tools_
+_Tools and **Vivecoded** apps_
 
-[Afin.ar](https://afin.ar): A Guitar Tuner App, Metronome, Scale, and more (Fully static PWA app with React, Next, Cloudflare Pages)
+[Afin.ar](https://afin.ar): A Guitar Tuner App, Metronome, Scale, and more (Fully static PWA app with React, Next, Cloudflare Pages). I did a lot of "vive coding" here!
 
 [LazyBackup](https://github.com/Ceneka/lazybackup/): web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.a web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.
+
+[Tenisdemesa.ar](https://tenisdemesa.ar): A site to track local tournament and places to play Table Tennis.
 
 ### Reach me out:
 
