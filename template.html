@@ -156,7 +156,7 @@
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.3rem;
         }
 
         /* Cards */
@@ -485,6 +485,14 @@
             transform: translateY(-2px);
         }
 
+        a[href^="https://"]::before {
+            content: "\f0ac";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
         /* Add icons to links automatically */
         a[href^="mailto:"]::before {
             content: "\f0e0";
@@ -504,14 +512,6 @@
         a[href^="https://github"]::before {
             content: "\f09b";
             font-family: "Font Awesome 6 Brands";
-            margin-right: 0.5rem;
-            color: var(--accent-color);
-        }
-
-        a[href^="https://"]::before {
-            content: "\f0ac";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
             margin-right: 0.5rem;
             color: var(--accent-color);
         }
@@ -724,6 +724,26 @@
             li {
                 backdrop-filter: none;
                 box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
+            .hero-actions a {
+                font-size: 0.95rem;
+            }
+
+            a {
+                padding: 0.35rem 0.6rem;
+                line-height: 1.2;
+                white-space: normal;
+                max-width: 100%;
+                margin-bottom: 0.3rem;
+            }
+
+            a::before {
+                margin-right: 0.4rem;
             }
         }
 
