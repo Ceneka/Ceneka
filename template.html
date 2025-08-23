@@ -929,6 +929,38 @@
                     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                     observer.observe(el);
                 });
+                // Reveal elements already in viewport on initial load or deep link
+                const isInViewport = (el) => {
+                    const rect = el.getBoundingClientRect();
+                    return (
+                        rect.top < window.innerHeight &&
+                        rect.bottom > 0 &&
+                        rect.left < window.innerWidth &&
+                        rect.right > 0
+                    );
+                };
+
+                const revealInViewOnStart = () => {
+                    animatedElements.forEach((el, idx) => {
+                        if (isInViewport(el)) {
+                            setTimeout(() => {
+                                el.style.opacity = '1';
+                                el.style.transform = 'translateX(0)';
+                                observer.unobserve(el);
+                            }, idx * 100);
+                        }
+                    });
+                };
+
+                // Run immediately and after load/hash changes to handle scroll restoration and deep links
+                revealInViewOnStart();
+                window.addEventListener('load', () => {
+                    revealInViewOnStart();
+                    setTimeout(revealInViewOnStart, 50);
+                    setTimeout(revealInViewOnStart, 200);
+                });
+                window.addEventListener('hashchange', revealInViewOnStart);
+                window.addEventListener('pageshow', revealInViewOnStart);
             }
 
             // Fix for date formatting in headings
