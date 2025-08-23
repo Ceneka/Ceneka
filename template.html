@@ -167,17 +167,35 @@
         }
 
         .card {
-            background: hsla(240, 15%, 12%, 0.6);
-            border: 1px solid var(--border-color-soft);
+            background: linear-gradient(180deg, hsla(240, 15%, 12%, 0.65), hsla(240, 15%, 12%, 0.5)) padding-box,
+                linear-gradient(135deg, rgba(18, 194, 233, 0.28), rgba(196, 113, 237, 0.22), rgba(246, 79, 89, 0.18)) border-box;
+            border: 1px solid transparent;
             border-radius: var(--card-radius);
             padding: var(--card-padding);
             box-shadow: var(--card-shadow-base);
             transition: transform var(--animation-duration) var(--easing-standard), box-shadow var(--animation-duration) var(--easing-standard);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(220px 90px at -10% -10%, rgba(255, 255, 255, 0.08), transparent 50%),
+                radial-gradient(200px 80px at 110% 120%, rgba(18, 194, 233, 0.08), transparent 60%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity var(--animation-duration) var(--easing-standard);
         }
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--card-shadow-hover);
+            box-shadow: var(--card-shadow-hover), 0 0 24px rgba(18, 194, 233, 0.12);
+        }
+
+        .card:hover::after {
+            opacity: 1;
         }
 
         .card h3 {
@@ -430,9 +448,7 @@
             margin: 3rem 0 1.5rem;
             font-weight: 600;
             color: var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 0 8px 8px 0;
-            background: linear-gradient(90deg, hsla(210, 100%, 30%, 0.2), transparent);
+            padding: 0.25rem 0;
             transition: all var(--animation-duration) ease;
             text-shadow: 0 0 5px var(--glow-color);
             position: relative;
@@ -452,6 +468,19 @@
             animation: pulse 3s infinite alternate;
         }
 
+        h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            height: 2px;
+            width: 64px;
+            background: var(--header-gradient);
+            border-radius: 2px;
+            opacity: 0.8;
+            transition: width var(--animation-duration) ease, opacity var(--animation-duration) ease;
+        }
+
         @keyframes pulse {
             0% {
                 opacity: 0.6;
@@ -464,7 +493,11 @@
 
         h3:hover {
             transform: translateX(5px);
-            background: linear-gradient(90deg, hsla(210, 100%, 30%, 0.3), transparent 80%);
+        }
+
+        h3:hover::after {
+            width: 96px;
+            opacity: 1;
         }
 
         h4 {
