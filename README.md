@@ -12,8 +12,8 @@ I thrive across the full stack—from infrastructure to polished frontends. I en
 
 ### Main Skills:
 
-*   **Programing Languages:** JavaScript, TypeScript, PHP
-*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, Livewire, Tailwind, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Jira, Analytics
+*   **Programing Languages:** JavaScript, TypeScript, PHP, Java, Python
+*   **Technologies:** React, NodeJS, Express, NextJS, Laravel, Livewire, Tailwind, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Jira, Analytics, Angular
 *   **Languages:** English (B2), Spanish (native)
 
 ### Experience:
@@ -22,7 +22,7 @@ I thrive across the full stack—from infrastructure to polished frontends. I en
 
 _May 2023 – Present_  
 
-I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives—including Docker-based containerization, Linux server administration, and managing AWS VMs and services—to ensure seamless deployments.
+I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives—including Docker-based containerization, Linux server administration, and managing AWS VMs and services—to ensure seamless deployments. Also I did maintenance and improvements in services made in Java/Spring.
 
 Additionally, I collaborated on modernizing legacy systems by integrating new technologies that enhanced reliability and adaptability. I also played an active role in project planning, participated in code reviews, and mentored team members, all while providing tailored consulting services from system architecture design to deployment and optimization strategies.
 

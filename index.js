@@ -206,5 +206,25 @@ if (fs.existsSync("./public")) {
     fs.cpSync("./public", "./build", { recursive: true });
 }
 
+// Copy vendor bundles locally for Cloudflare Pages
+const vendorDir = "./build/vendor";
+if (!fs.existsSync(vendorDir)) fs.mkdirSync(vendorDir, { recursive: true });
+// marked
+if (fs.existsSync("./node_modules/marked/marked.min.js")) {
+    fs.copyFileSync("./node_modules/marked/marked.min.js", `${vendorDir}/marked.min.js`);
+} else if (fs.existsSync("./node_modules/marked/lib/marked.umd.js")) {
+    fs.copyFileSync("./node_modules/marked/lib/marked.umd.js", `${vendorDir}/marked.min.js`);
+}
+// html2pdf
+if (fs.existsSync("./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js")) {
+    fs.copyFileSync("./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js", `${vendorDir}/html2pdf.bundle.min.js`);
+}
+// DOMPurify
+if (fs.existsSync("./node_modules/dompurify/dist/purify.min.js")) {
+    fs.copyFileSync("./node_modules/dompurify/dist/purify.min.js", `${vendorDir}/purify.min.js`);
+}
+// Expose README for client-side fetch
+fs.copyFileSync("./README.md", "./build/README.md");
+
 // Write final HTML
 fs.writeFileSync("./build/index.html", output);
