@@ -914,7 +914,7 @@
             <nav class="nav-links" aria-label="Primary">
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
-                <a href="#" id="download-pdf" aria-label="Download PDF">Download PDF</a>
+                <a href="{{PDF_DOWNLOAD_URL}}" download aria-label="Download PDF">Download PDF</a>
             </nav>
         </div>
     </header>
@@ -927,9 +927,6 @@
         </div>
     </footer>
 
-    <script src="/vendor/marked.min.js"></script>
-    <script src="/vendor/html2pdf.bundle.min.js"></script>
-    <script src="/vendor/purify.min.js"></script>
     <script>
         // Animation on scroll with staggered effect
         document.addEventListener('DOMContentLoaded', function () {
@@ -1014,87 +1011,7 @@
                 }
             });
 
-            // Download PDF from README.md
-            const downloadBtn = document.getElementById('download-pdf');
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', async (e) => {
-                    e.preventDefault();
-                    try {
-                        downloadBtn.setAttribute('aria-busy', 'true');
-                        const response = await fetch('/README.md', { cache: 'no-cache' });
-                        let mdText = '';
-                        if (response.ok) {
-                            mdText = await response.text();
-                        } else {
-                            throw new Error('README.md not accessible');
-                        }
-                        const rawHtml = (window.marked && window.marked.parse) ? window.marked.parse(mdText) : (window.marked ? window.marked(mdText) : mdText);
-                        const safeHtml = window.DOMPurify ? window.DOMPurify.sanitize(rawHtml) : rawHtml;
 
-                        // Create an isolated, offscreen iframe to avoid site styles
-                        const iframe = document.createElement('iframe');
-                        iframe.style.position = 'fixed';
-                        iframe.style.left = '-10000px';
-                        iframe.style.top = '0';
-                        iframe.style.width = '816px';
-                        iframe.style.height = '1056px';
-                        iframe.setAttribute('aria-hidden', 'true');
-                        document.body.appendChild(iframe);
-
-                        const idoc = iframe.contentDocument || iframe.contentWindow.document;
-                        const minimalCss = `
-                            :root { color-scheme: light; }
-                            html, body { background: #ffffff; }
-                            body {
-                              margin: 0; padding: 32px; color: #111111;
-                              font: 12pt/1.6 'Segoe UI', system-ui, -apple-system, sans-serif;
-                            }
-                            h1 { font-size: 22pt; margin: 0 0 12pt; }
-                            h2 { font-size: 18pt; margin: 18pt 0 10pt; }
-                            h3 { font-size: 14pt; margin: 16pt 0 8pt; }
-                            h4 { font-size: 12pt; margin: 14pt 0 6pt; }
-                            p { margin: 0 0 10pt; }
-                            ul, ol { margin: 0 0 10pt 0; padding-left: 18pt; }
-                            a { color: #0366d6; text-decoration: none; }
-                            code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; }
-                            pre { white-space: pre-wrap; word-wrap: break-word; background: #f6f8fa; border: 1px solid #eaecef; padding: 8pt; border-radius: 4pt; }
-                            hr { border: 0; border-top: 1px solid #eaecef; margin: 12pt 0; }
-                            table { border-collapse: collapse; width: 100%; margin: 0 0 10pt; }
-                            th, td { border: 1px solid #eaecef; padding: 6pt 8pt; }
-                        `;
-                        idoc.open();
-                        idoc.write('<!doctype html><html><head><meta charset="utf-8"><title>CV</title><style>' + minimalCss + '</style></head><body><div id="md-root"></div></body></html>');
-                        idoc.close();
-
-                        // Wait a tick to ensure layout is ready
-                        await new Promise(r => setTimeout(r, 50));
-                        const target = idoc.getElementById('md-root');
-                        if (target) {
-                            target.innerHTML = safeHtml;
-                        }
-
-                        const options = {
-                            margin: 10,
-                            filename: 'Zic-Juan-CV.pdf',
-                            image: { type: 'jpeg', quality: 0.98 },
-                            html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
-                            jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
-                        };
-
-                        if (window.html2pdf) {
-                            await window.html2pdf().from(target).set(options).save();
-                        } else {
-                            throw new Error('PDF library not loaded');
-                        }
-                        iframe.remove();
-                    } catch (err) {
-                        console.error(err);
-                        alert('Could not generate the PDF from README.md.');
-                    } finally {
-                        downloadBtn.removeAttribute('aria-busy');
-                    }
-                });
-            }
         });
     </script>
 </body>

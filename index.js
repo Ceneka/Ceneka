@@ -1,5 +1,7 @@
 import fs from "fs";
 import { Marked } from "marked";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Utilities
 const removeBars = (text) => text.replace(/\|/g, '');
@@ -173,6 +175,8 @@ const remainingCleanMd = removeBars(remainingMd);
 let remainingHtml = await renderer.parse(remainingCleanMd);
 
 // Assemble final content
+const todayIso = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+const pdfFilename = `cv-${todayIso}.pdf`;
 const finalContent = `
 ${buildHeroHTML(hero)}
 
@@ -196,7 +200,8 @@ ${buildHeroHTML(hero)}
 `;
 
 // Inject into template
-const output = template.replace("{{HTML_CV_CONTENT}}", finalContent);
+let output = template.replace("{{HTML_CV_CONTENT}}", finalContent);
+output = output.replace("{{PDF_DOWNLOAD_URL}}", pdfFilename);
 
 // Ensure build directory and assets
 if (!fs.existsSync("./build")) {
@@ -206,25 +211,128 @@ if (fs.existsSync("./public")) {
     fs.cpSync("./public", "./build", { recursive: true });
 }
 
-// Copy vendor bundles locally for Cloudflare Pages
-const vendorDir = "./build/vendor";
-if (!fs.existsSync(vendorDir)) fs.mkdirSync(vendorDir, { recursive: true });
-// marked
-if (fs.existsSync("./node_modules/marked/marked.min.js")) {
-    fs.copyFileSync("./node_modules/marked/marked.min.js", `${vendorDir}/marked.min.js`);
-} else if (fs.existsSync("./node_modules/marked/lib/marked.umd.js")) {
-    fs.copyFileSync("./node_modules/marked/lib/marked.umd.js", `${vendorDir}/marked.min.js`);
-}
-// html2pdf
-if (fs.existsSync("./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js")) {
-    fs.copyFileSync("./node_modules/html2pdf.js/dist/html2pdf.bundle.min.js", `${vendorDir}/html2pdf.bundle.min.js`);
-}
-// DOMPurify
-if (fs.existsSync("./node_modules/dompurify/dist/purify.min.js")) {
-    fs.copyFileSync("./node_modules/dompurify/dist/purify.min.js", `${vendorDir}/purify.min.js`);
-}
-// Expose README for client-side fetch
-fs.copyFileSync("./README.md", "./build/README.md");
-
 // Write final HTML
 fs.writeFileSync("./build/index.html", output);
+
+// Build a minimal, clean print HTML from README (no site styles)
+const contactLinksInline = hero.contactLinks
+    .slice(0, 6)
+    .map(l => `<a href="${l.href}">${l.label}</a>`)
+    .join(' · ');
+
+let aboutSectionHtml = '';
+const aboutSectionMdMatch = rawReadme.match(/###\s+About me:[\s\S]*?(?=\n###|\n$)/);
+if (aboutSectionMdMatch) {
+    const aboutSectionMd = aboutSectionMdMatch[0]
+        .replace(/###\s+About me:/, '')
+        .trim();
+    aboutSectionHtml = await renderer.parse(aboutSectionMd);
+}
+
+// Build a compact skills section (grouped, comma-separated lists)
+let skillsSectionHtml = '';
+const skillsMatch = rawReadme.match(/### Main Skills:\n([\s\S]*?)(\n###|\n$)/);
+if (skillsMatch) {
+    const skillsSection = skillsMatch[1].trim();
+    const lines = skillsSection.split('\n').map(l => l.trim()).filter(Boolean);
+    const groups = {};
+    lines.forEach(line => {
+        const cleaned = line.replace(/^\*+\s*/, '');
+        const parts = cleaned.split(':**');
+        if (parts.length === 2) {
+            const groupTitle = parts[0].replace(/\*\*/g, '').trim();
+            const items = parts[1].split(',').map(s => s.trim()).filter(Boolean);
+            if (groupTitle && items.length) groups[groupTitle] = items;
+        }
+    });
+    const groupBlocks = Object.entries(groups).map(([group, items]) => {
+        const line = items.join(', ');
+        return `<div class="skills-group"><h4>${group}</h4><p class="skills-line">${line}</p></div>`;
+    }).join('');
+    if (groupBlocks) skillsSectionHtml = `<section class="skills"><h3>Skills</h3>${groupBlocks}</section>`;
+}
+
+const printHtml = `<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${hero.name || 'CV'}${hero.role ? ' – ' + hero.role : ''}</title>
+<style>
+  :root { --text: #111; --muted: #555; --accent: #0b6efd; }
+  @page { size: A4; margin: 14mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); line-height: 1.5; }
+  .container { max-width: 800px; margin: 0 auto; }
+  header { margin-bottom: 16px; }
+  h1 { font-size: 28px; margin: 0 0 4px; color: var(--accent); }
+  h2 { font-size: 18px; margin: 0 0 8px; color: var(--muted); font-weight: 500; }
+  .contacts { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .contacts a { color: inherit; text-decoration: none; }
+  .contacts a:hover { text-decoration: underline; }
+  main { font-size: 13px; }
+  section { margin: 14px 0; }
+  h3 { font-size: 16px; margin: 18px 0 8px; color: var(--accent); }
+  h4 { font-size: 14px; margin: 12px 0 4px; color: var(--accent); }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0 6px 18px; padding: 0; }
+  li { margin: 3px 0; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
+  /* Avoid breaking headings from their content */
+  h3, h4 { break-after: avoid; }
+  /* Allow entries to break naturally */
+  .timeline-item, .card, .skill-group { break-inside: avoid; }
+  /* Links visibly underlined for print */
+  a { color: inherit; text-decoration: underline; }
+  /* Remove any accidental background */
+  body, html { background: #fff; }
+  /* Compact skills styling */
+  .skills { margin-top: 8px; }
+  .skills-group { margin: 8px 0; }
+  .skills-line { margin: 2px 0 0; font-size: 12.5px; color: var(--text); }
+</style>
+</head><body><div class="container">
+  <header>
+    <h1>${hero.name || ''}</h1>
+    ${hero.role ? `<h2>${hero.role}</h2>` : ''}
+    ${contactLinksInline ? `<div class="contacts">${contactLinksInline}</div>` : ''}
+  </header>
+  <main>
+    ${aboutSectionHtml ? `<section><h3>About</h3>${aboutSectionHtml}</section>` : ''}
+    ${skillsSectionHtml}
+    ${experienceHTML ? `<section><h3>Experience</h3>${experienceHTML}</section>` : ''}
+    ${remainingHtml ? `<hr /><section>${remainingHtml}</section>` : ''}
+  </main>
+</div></body></html>`;
+
+fs.writeFileSync("./build/cv-print.html", printHtml);
+
+// Generate PDF at build time using Puppeteer (no jsPDF)
+try {
+    const { default: puppeteer } = await import("puppeteer");
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+        ],
+    });
+    const page = await browser.newPage();
+
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const printPath = path.resolve(__dirname, "build", "cv-print.html");
+    const fileUrl = `file://${printPath}`;
+
+    await page.goto(fileUrl, { waitUntil: "networkidle0" });
+    await page.emulateMediaType("print");
+    await page.pdf({
+        path: path.resolve(__dirname, "build", pdfFilename),
+        format: "A4",
+        printBackground: true,
+        margin: { top: "14mm", right: "12mm", bottom: "14mm", left: "12mm" },
+    });
+    await browser.close();
+    console.log(`PDF generated: ${pdfFilename}`);
+} catch (err) {
+    console.warn("PDF generation skipped (Puppeteer not available):", err?.message || err);
+}
