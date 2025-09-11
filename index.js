@@ -176,7 +176,7 @@ let remainingHtml = await renderer.parse(remainingCleanMd);
 
 // Assemble final content
 const todayIso = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-const pdfFilename = `cv-${todayIso}.pdf`;
+const pdfFilename = `Zic-Juan-CV-${todayIso}.pdf`;
 const finalContent = `
 ${buildHeroHTML(hero)}
 
