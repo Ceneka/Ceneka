@@ -1,10 +1,18 @@
 import fs from "fs";
 import { Marked } from "marked";
+import OpenAI from "openai";
 import path from "path";
 import { fileURLToPath } from "url";
 
 // Utilities
 const removeBars = (text) => text.replace(/\|/g, '');
+const escapeHtml = (text = '') =>
+    text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 
 const readTextFile = (path) => fs.readFileSync(path, "utf-8");
 
@@ -59,6 +67,67 @@ function parseHero(markdown) {
     }
 
     return { name, role, aboutSnippet, contactLinks };
+}
+
+async function fetchAiResume(markdown) {
+    if (process.env?.LLM_DISABLE === "true" || process.env?.LLM_DISABLE === "1") {
+        console.warn("AI resume skipped: LLM_DISABLE detected");
+        return "Seasoned full-stack engineer delivering scalable web products across frontend and backend, focused on reliability and clear, maintainable code.";
+    }
+
+    if (!process.env.LLM_TOKEN) {
+        console.warn("AI resume skipped: LLM_TOKEN not set");
+        return null;
+    }
+
+    try {
+        const client = new OpenAI({
+            baseURL: process.env.LLM_ENDPOINT,
+            apiKey: process.env.LLM_TOKEN,
+        });
+
+        const clippedInput = markdown.slice(0, 8000);
+        const completion = await client.chat.completions.create({
+            model: process.env.LLM_MODEL,
+            temperature: 0.35,
+            max_tokens: 240,
+            messages: [
+                {
+                    role: "system",
+                    content: "You write concise, confident resume summaries in 2-3 sentences. Mention role, standout expertise, and recent impact. Keep it HTML-safe, no Markdown, no code blocks.",
+                },
+                {
+                    role: "user",
+                    content: `Summarize this profile:\n${clippedInput}`,
+                },
+            ],
+        });
+
+        return completion?.choices?.[0]?.message?.content?.trim() || null;
+    } catch (err) {
+        console.warn("AI resume skipped:", err?.message || err);
+        return null;
+    }
+}
+
+function buildAiResumeSection(aiText) {
+    if (!aiText) return '';
+    const paragraphs = aiText
+        .split(/\n{2,}/)
+        .map(p => p.trim())
+        .filter(Boolean)
+        .map(p => `<p>${escapeHtml(p).replace(/\n/g, '<br>')}</p>`)
+        .join('');
+
+    if (!paragraphs) return '';
+
+    return `
+<section class="ai-resume" id="ai-resume">
+  <div class="container ai-resume-inner">
+    <div class="ai-chip">AI Resume</div>
+    <div class="ai-resume-body">${paragraphs}</div>
+  </div>
+</section>`;
 }
 
 // Parse and transform the Main Skills section into cards
@@ -167,6 +236,8 @@ const template = readTextFile("./template.html");
 const hero = parseHero(rawReadme);
 const skillsCardsHTML = parseSkillsAsCards(rawReadme);
 const experienceHTML = parseExperienceTimeline(rawReadme);
+const aiResumeText = await fetchAiResume(rawReadme);
+const aiResumeHTML = buildAiResumeSection(aiResumeText);
 
 // Build remaining content
 const renderer = new Marked();
@@ -178,6 +249,7 @@ let remainingHtml = await renderer.parse(remainingCleanMd);
 const todayIso = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 const pdfFilename = `Zic-Juan-CV-${todayIso}.pdf`;
 const finalContent = `
+${aiResumeHTML}
 ${buildHeroHTML(hero)}
 
 <section class="section" id="skills">

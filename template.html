@@ -93,6 +93,60 @@
             gap: var(--navbar-gap);
         }
 
+        /* AI Resume banner */
+        .ai-resume {
+            padding: 1.25rem 0 0.5rem;
+        }
+
+        .ai-resume-inner {
+            display: grid;
+            gap: 0.75rem;
+            max-width: 880px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, hsla(0, 0%, 100%, 0.24), hsla(0, 0%, 100%, 0.16));
+            border: 1px solid hsla(0, 0%, 100%, 0.28);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            backdrop-filter: blur(10px);
+            color: #e9eef8;
+        }
+
+        .ai-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            background: hsla(0, 0%, 100%, 0.24);
+            color: #0a1020;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid hsla(0, 0%, 100%, 0.32);
+            box-shadow: none;
+            width: max-content;
+        }
+
+        .ai-chip::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath d='M14.217 19.707l-1.112 2.547c-.427.979-1.782.979-2.21 0l-1.112-2.547c-.99-2.267-2.771-4.071-4.993-5.057L1.73 13.292c-.973-.432-.973-1.848 0-2.28l2.965-1.316C6.974 8.684 8.787 6.813 9.76 4.47l1.126-2.714c.418-1.007 1.81-1.007 2.228 0l1.126 2.714c.973 2.344 2.786 4.215 5.065 5.226l2.965 1.316c.973.432.973 1.848 0 2.28l-3.061 1.359c-2.221.986-4.003 2.79-4.992 5.056z'/%3E%3Cpath d='M24.481 27.796l-.339.777c-.248.569-1.036.569-1.284 0l-.339-.777c-.604-1.385-1.693-2.488-3.051-3.092l-1.044-.464c-.565-.251-.565-1.072 0-1.323l.986-.438c1.393-.619 2.501-1.763 3.095-3.195l.348-.84c.243-.585 1.052-.585 1.294 0l.348.84c.594 1.432 1.702 2.576 3.095 3.195l.986.438c.565.251.565 1.072 0 1.323l-1.044.464c-1.358.604-2.447 1.707-3.051 3.092z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath d='M14.217 19.707l-1.112 2.547c-.427.979-1.782.979-2.21 0l-1.112-2.547c-.99-2.267-2.771-4.071-4.993-5.057L1.73 13.292c-.973-.432-.973-1.848 0-2.28l2.965-1.316C6.974 8.684 8.787 6.813 9.76 4.47l1.126-2.714c.418-1.007 1.81-1.007 2.228 0l1.126 2.714c.973 2.344 2.786 4.215 5.065 5.226l2.965 1.316c.973.432.973 1.848 0 2.28l-3.061 1.359c-2.221.986-4.003 2.79-4.992 5.056z'/%3E%3Cpath d='M24.481 27.796l-.339.777c-.248.569-1.036.569-1.284 0l-.339-.777c-.604-1.385-1.693-2.488-3.051-3.092l-1.044-.464c-.565-.251-.565-1.072 0-1.323l.986-.438c1.393-.619 2.501-1.763 3.095-3.195l.348-.84c.243-.585 1.052-.585 1.294 0l.348.84c.594 1.432 1.702 2.576 3.095 3.195l.986.438c.565.251.565 1.072 0 1.323l-1.044.464c-1.358.604-2.447 1.707-3.051 3.092z'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+
+        .ai-resume-body p {
+            margin: 0;
+            color: #e9eef8;
+            font-weight: 600;
+        }
+
+        .ai-resume-body p:hover {
+            color: #ffffff;
+        }
+
         /* Hero */
         .hero {
             position: relative;
@@ -296,8 +350,8 @@
             --grid-gap: 1.25rem;
             --navbar-height: 64px;
             --navbar-gap: 0.25rem;
-            --hero-padding-top: 6rem;
-            --hero-padding-bottom: 4rem;
+            --hero-padding-top: 4rem;
+            --hero-padding-bottom: 3.5rem;
             --actions-gap: 0.3rem;
             --cards-gap: 1rem;
             --backdrop-blur: 12px;
@@ -336,13 +390,14 @@
             color: var(--primary-text-color);
             background-image:
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Ctext x='20' y='40' transform='rotate(40 20 40)' fill='%23ffffff08' font-family='Segoe UI, Arial, sans-serif' font-size='22' font-weight='800' letter-spacing='2'%3ELLM%20SLOP%20FTW!!%3C/text%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Ccircle cx='130' cy='130' r='90' fill='none' stroke='%23ffffff08' stroke-width='1.6'/%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Crect x='40' y='40' width='120' height='120' rx='16' fill='none' stroke='%23ffffff08' stroke-width='1.4' transform='rotate(8 120 120)'/%3E%3C/svg%3E"),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cpolygon points='130 24 240 230 30 210' fill='none' stroke='%23ffffff08' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='105' fill='none' stroke='%23ffffff08' stroke-width='1.6'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='260' viewBox='0 0 220 260'%3E%3Crect x='36' y='44' width='140' height='140' rx='18' fill='none' stroke='%23ffffff08' stroke-width='1.4' transform='rotate(12 110 130)'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='240' viewBox='0 0 320 240'%3E%3Cpolygon points='160 28 300 230 40 210' fill='none' stroke='%23ffffff08' stroke-width='1.5'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Cg stroke='%23ffffff0a' stroke-width='1.1' fill='none'%3E%3Cpath d='M10 40 L270 30 M30 120 L250 160 M60 210 L230 240'/%3E%3Cpath d='M40 20 Q120 80 40 140 T40 260'/%3E%3C/g%3E%3C/svg%3E"),
                 linear-gradient(145deg, #0f1116, #111827);
-            background-repeat: repeat, repeat, repeat, repeat, no-repeat;
-            background-size: 180px 180px, 260px 260px, 240px 240px, 260px 260px, cover;
-            background-position: 0 0, 40px 60px, 120px 20px, 80px 140px, center;
+            background-repeat: repeat, repeat, repeat, repeat, repeat, no-repeat;
+            background-size: 180px 180px, 300px 300px, 220px 260px, 320px 240px, 280px 280px, cover;
+            background-position: 0 0, 60px 90px, -40px 140px, 180px -30px, 120px 200px, center;
             margin: 0;
             padding: 0;
             transition: all var(--transition-duration) var(--easing-standard);
@@ -747,6 +802,14 @@
                 font-size: var(--mobile-font-size);
                 background-attachment: scroll;
                 will-change: auto;
+            }
+
+            .ai-resume {
+                padding: 1rem var(--container-padding-x);
+            }
+
+            .ai-resume-inner {
+                margin: 0;
             }
 
             h2 {
