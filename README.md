@@ -8,7 +8,7 @@ Hi there 👋👋! I’m Juan, a Full Stack web developer from La Plata, Provinc
 
 Nowadays, I mainly work planning, developing, deploying and maintaining Apps, Websites and Games with technologies and tools like React, NextJS, Node, TypeScript, MariaDB/MySQL, Redis, Google Cloud Platform, Docker among others.
 
-I thrive across the full stack—from infrastructure to polished frontends. I enjoy planning systems end‑to‑end, provisioning Linux VMs and cloud resources (GCP, AWS), containerizing with Docker, automating CI/CD and zero‑downtime deployments, wiring logs/metrics/alerts for real observability, and running reliable self‑hosted setups when it makes sense. On the frontend, I obsess over performance and delightful UX (especially game‑like interfaces), turning complex real‑time behavior into fast, intuitive experiences. I’m hands‑on, pragmatic, and collaborative—owning outcomes, removing blockers, and raising the bar for the team.
+I thrive across the full stack - from infrastructure to polished frontends. I enjoy planning systems end‑to‑end, provisioning Linux VMs and cloud resources (GCP, AWS), containerizing with Docker, automating CI/CD and zero‑downtime deployments, wiring logs/metrics/alerts for real observability, and running reliable self‑hosted setups when it makes sense. On the frontend, I obsess over performance and delightful UX (especially game‑like interfaces), turning complex real‑time behavior into fast, intuitive experiences. I’m hands‑on, pragmatic, and collaborative - owning outcomes, removing blockers, and raising the bar for the team.
 
 ### Main Skills:
 
@@ -22,7 +22,7 @@ I thrive across the full stack—from infrastructure to polished frontends. I en
 
 _May 2023 – Present_  
 
-I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives—including Docker-based containerization, Linux server administration, and managing AWS VMs and services—to ensure seamless deployments. Also I did maintenance and improvements in services made in Java/Spring.
+I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives - including Docker-based containerization, Linux server administration, and managing AWS VMs and services - to ensure seamless deployments. Also I did maintenance and improvements in services made in Java/Spring.
 
 Additionally, I collaborated on modernizing legacy systems by integrating new technologies that enhanced reliability and adaptability. I also played an active role in project planning, participated in code reviews, and mentored team members, all while providing tailored consulting services from system architecture design to deployment and optimization strategies.
 
@@ -62,7 +62,7 @@ _March 2007 - Present_
 
 I created numerous landing pages and blogs using WordPress, developed custom plugins, and consistently maintained and optimized these sites. I also built administrative software for an educational institution that streamlined student management, monitored debtor activity, and facilitated effective communication with parents.
 
-In addition, I provide ongoing maintenance for live sites—including WordPress, OJS, and custom platforms—ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
+In addition, I provide ongoing maintenance for live sites - including WordPress, OJS, and custom platforms - ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
 
 Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](https://lajsba.sedimentologia.org.ar) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo Escolar](https://sapie.com.ar)
 
