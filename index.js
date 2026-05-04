@@ -13,6 +13,12 @@ const escapeHtml = (text = '') =>
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
+const openLinksInNewTab = (html = '') =>
+    html.replace(/<a\b(?![^>]*\btarget=)([^>]*\bhref=(["'])(?!#)[^"']+\2[^>]*)>/gi, (tag, attrs) => {
+        if (/\bdownload\b/i.test(attrs)) return tag;
+        const rel = /\brel=/i.test(attrs) ? '' : ' rel="noopener noreferrer"';
+        return `<a${attrs} target="_blank"${rel}>`;
+    });
 
 const readTextFile = (path) => fs.readFileSync(path, "utf-8");
 
@@ -150,7 +156,9 @@ function parseSkillsAsCards(markdown) {
     });
     let html = '';
     Object.entries(groups).forEach(([group, items]) => {
-        html += `<div class="card skill-group"><h3>${group}</h3><ul>`;
+        const cardClasses = ['card', 'skill-group'];
+        if (items.length > 8) cardClasses.push('skill-group-wide');
+        html += `<div class="${cardClasses.join(' ')}"><h3>${group}</h3><ul>`;
         items.forEach(item => {
             html += `<li>${item}</li>`;
         });
@@ -274,6 +282,7 @@ ${buildHeroHTML(hero)}
 // Inject into template
 let output = template.replace("{{HTML_CV_CONTENT}}", finalContent);
 output = output.replace("{{PDF_DOWNLOAD_URL}}", pdfFilename);
+output = openLinksInNewTab(output);
 
 // Ensure build directory and assets
 if (!fs.existsSync("./build")) {
@@ -375,7 +384,7 @@ const printHtml = `<!DOCTYPE html><html lang="en"><head>
   </main>
 </div></body></html>`;
 
-fs.writeFileSync("./build/cv-print.html", printHtml);
+fs.writeFileSync("./build/cv-print.html", openLinksInNewTab(printHtml));
 
 // Generate PDF at build time using Puppeteer (no jsPDF)
 try {

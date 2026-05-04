@@ -14,6 +14,7 @@ I thrive across the full stack - from infrastructure to polished frontends. I en
 
 *   **Programing Languages:** JavaScript, TypeScript, PHP, Java, Python
 *   **Technologies:** React, NodeJS, Express, NextJS, Laravel, Livewire, Tailwind, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Jira, Analytics, Angular
+*   **AI & Agentic Tools:** Cursor, Claude, agentic workflows, local inference
 *   **Languages:** English (B2), Spanish (native)
 
 ### Experience:
@@ -40,7 +41,7 @@ I managed all the monitoring and got involved in the feedback from users. I als
 
 _April 2019 - December 2020 (1 year 8 months)_
 
-Development of a payment gateway for users in Paraguay, with payments with cell phone credit and creation and maintenance of SDKs for PHP and NodeJS. I Developed it with React, Laravel and MariaDB and deployed on Google Cloud Platform.
+GeekWallet started as a donation platform, and from there we created [Arnipay](https://arnipay.com.py), a payment gateway for users in Paraguay that is now in production. I worked on payments with cell phone credit, fraud detection, Laravel and Livewire applications, MariaDB, and the creation and maintenance of SDKs for PHP and NodeJS, deployed on Google Cloud Platform.
 
 #### **Full Stack Developer and Owner of Ceneka (ceneka.net)**
 
@@ -71,6 +72,8 @@ Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](https
 _Tools and **Vivecoded** apps_
 
 [Afin.ar](https://afin.ar): A Guitar Tuner App, Metronome, Scale, and more (Fully static PWA app with React, Next, Cloudflare Pages). I did a lot of "vive coding" here!
+
+[ElTruco.ar](https://eltruco.ar): A fast, free Truco score counter, vivecoded through the full flow from prompt to production.
 
 [LazyBackup](https://github.com/Ceneka/lazybackup/): web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.a web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.
 

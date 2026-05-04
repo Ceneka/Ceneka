@@ -216,7 +216,8 @@
         /* Cards */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-flow: dense;
             gap: var(--cards-gap);
         }
 
@@ -260,6 +261,10 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+        }
+
+        .skill-group-wide {
+            grid-column: 1 / -1;
         }
 
         .skill-group ul {
@@ -809,6 +814,10 @@
 
             .ai-resume-inner {
                 margin: 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
             }
 
             h2 {
