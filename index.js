@@ -127,11 +127,19 @@ function buildAiResumeSection(aiText) {
 
     if (!paragraphs) return '';
 
+    const model = process.env.LLM_MODEL ? escapeHtml(process.env.LLM_MODEL) : 'an LLM';
+
     return `
 <section class="ai-resume" id="ai-resume">
-  <div class="container ai-resume-inner">
-    <div class="ai-chip">AI Resume</div>
-    <div class="ai-resume-body">${paragraphs}</div>
+  <div class="container">
+    <div class="ai-resume-inner">
+      <div class="ai-resume-head">
+        <span class="ai-chip">AI summary</span>
+        <span class="ai-q">"summarize this CV for busy recruiters"</span>
+      </div>
+      <div class="ai-resume-body">${paragraphs}</div>
+      <div class="ai-note">// generated at build time by ${model} — rebuilt on every deploy, reviewed by the human</div>
+    </div>
   </div>
 </section>`;
 }
@@ -158,6 +166,7 @@ function parseSkillsAsCards(markdown) {
     Object.entries(groups).forEach(([group, items]) => {
         const cardClasses = ['card', 'skill-group'];
         if (items.length > 8) cardClasses.push('skill-group-wide');
+        if (/\bAI\b|Agentic|LLM/i.test(group)) cardClasses.push('skill-group-ai');
         html += `<div class="${cardClasses.join(' ')}"><h3>${group}</h3><ul>`;
         items.forEach(item => {
             html += `<li>${item}</li>`;
@@ -168,8 +177,10 @@ function parseSkillsAsCards(markdown) {
 }
 
 // Parse Experience into a timeline structure
-function parseExperienceTimeline(markdown) {
-    const expMatch = markdown.match(/###\s+Experience:[\s\S]*?(?=\n###|\n$)/);
+// Note: the (?=\n###\s) lookahead requires whitespace after ### so the
+// "####" entry headings inside the section don't terminate the match early.
+function parseExperienceTimeline(markdown, inline) {
+    const expMatch = markdown.match(/###\s+Experience:[\s\S]*?(?=\n###\s|\s*$)/);
     if (!expMatch) return '';
     const expBlock = expMatch[0].replace(/###\s+Experience:/, '').trim();
     const entries = expBlock.split(/\n(?=####\s)/).map(s => s.trim()).filter(Boolean);
@@ -191,10 +202,10 @@ function parseExperienceTimeline(markdown) {
         // Merge consecutive lines into paragraphs by blank lines
         const paragraphs = descLines.join('\n').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
         html += `<div class="timeline-item"><div class="card timeline-card">`;
-        html += `<h4>${titleLine}</h4>`;
-        if (period) html += `<p><em>${period}</em></p>`;
+        html += `<h4>${inline(titleLine)}</h4>`;
+        if (period) html += `<p class="period"><em>${inline(period)}</em></p>`;
         paragraphs.forEach(p => {
-            html += `<p>${p}</p>`;
+            html += `<p>${inline(p)}</p>`;
         });
         html += `</div></div>`;
     });
@@ -207,14 +218,16 @@ function buildHeroHTML(hero) {
     const actions = contactLinks.slice(0, 4).map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join('');
     return `
 <section class="section hero" id="about">
-  <div class="backdrop"></div>
   <div class="container">
-    <div class="grid">
-      <div class="hero-card">
-        <div class="hero-title">${name}</div>
-        ${role ? `<div class="hero-subtitle">${role}</div>` : ''}
-        ${aboutSnippet ? `<p class="hero-desc">${aboutSnippet}</p>` : ''}
-        <div class="hero-actions">${actions}</div>
+    <div class="hero-card">
+      <div class="hero-eyebrow"><span class="path">~/zic.ar</span> <span class="dollar">$</span> whoami<span class="blink" aria-hidden="true">▍</span></div>
+      <h1 class="hero-title"><span class="grad-text">${name}</span></h1>
+      ${role ? `<p class="hero-subtitle">${role}</p>` : ''}
+      ${aboutSnippet ? `<p class="hero-desc">${aboutSnippet}</p>` : ''}
+      <div class="hero-actions">${actions}</div>
+      <div class="hero-badges">
+        <span class="badge"><span class="pulse-dot"></span>Shipping for 20+ years</span>
+        <span class="badge badge-ai">✦ LLM-assisted, human-approved</span>
       </div>
     </div>
   </div>
@@ -226,12 +239,12 @@ function stripSections(markdown) {
     let md = markdown;
     // Remove top header and immediate contact line(s)
     md = md.replace(/^##\s+.*$/m, '');
-    // Remove the next line if it contains links
-    md = md.replace(/^\s*\[.*\)\s*(\|.*\))?.*$/m, '');
+    // Remove the next line if it contains links ([ \t]* so it can't cross newlines and eat headings)
+    md = md.replace(/^[ \t]*\[.*\)[ \t]*(\|.*\))?.*$/m, '');
     // Remove About, Main Skills, Experience, Reach me out sections
     md = md.replace(/###\s+About me:[\s\S]*?(?=\n###|\n$)/, '');
     md = md.replace(/###\s+Main Skills:[\s\S]*?(?=\n###|\n$)/, '');
-    md = md.replace(/###\s+Experience:[\s\S]*?(?=\n###|\n$)/, '');
+    md = md.replace(/###\s+Experience:[\s\S]*?(?=\n###\s|\s*$)/, '');
     md = md.replace(/###\s+Reach me out:[\s\S]*?(?=\n###|\n$)/, '');
     return md.trim();
 }
@@ -241,14 +254,15 @@ const rawReadme = readTextFile("./README.md");
 const template = readTextFile("./template.html");
 
 // Build sections
+const renderer = new Marked();
+const inline = (text) => renderer.parseInline(text);
 const hero = parseHero(rawReadme);
 const skillsCardsHTML = parseSkillsAsCards(rawReadme);
-const experienceHTML = parseExperienceTimeline(rawReadme);
+const experienceHTML = parseExperienceTimeline(rawReadme, inline);
 const aiResumeText = await fetchAiResume(rawReadme);
 const aiResumeHTML = buildAiResumeSection(aiResumeText);
 
 // Build remaining content
-const renderer = new Marked();
 const remainingMd = stripSections(rawReadme);
 const remainingCleanMd = removeBars(remainingMd);
 let remainingHtml = await renderer.parse(remainingCleanMd);
@@ -256,9 +270,16 @@ let remainingHtml = await renderer.parse(remainingCleanMd);
 // Assemble final content
 const todayIso = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 const pdfFilename = `Zic-Juan-CV-${todayIso}.pdf`;
+const contentSection = remainingHtml && remainingHtml.trim()
+    ? `
+<section class="section" id="content">
+  <div class="container">${remainingHtml}</div>
+</section>`
+    : '';
+
 const finalContent = `
-${aiResumeHTML}
 ${buildHeroHTML(hero)}
+${aiResumeHTML}
 
 <section class="section" id="skills">
   <div class="container">
@@ -273,10 +294,7 @@ ${buildHeroHTML(hero)}
     <div class="timeline">${experienceHTML}</div>
   </div>
 </section>
-
-<section class="section" id="content">
-  <div class="container">${remainingHtml}</div>
-  </section>
+${contentSection}
 `;
 
 // Inject into template
