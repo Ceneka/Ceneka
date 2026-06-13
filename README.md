@@ -1,6 +1,6 @@
 ## Zic Juan ♦ Senior Full Stack Web Developer
 
-[jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
+[juan@zic.ar](mailto:juan@zic.ar) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
 
 ### About me:
 
@@ -81,4 +81,4 @@ _Tools and **Vivecoded** apps_
 
 ### Reach me out:
 
-[jzic@outlook.com](mailto:jzic@outlook.com) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
+[juan@zic.ar](mailto:juan@zic.ar) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)
