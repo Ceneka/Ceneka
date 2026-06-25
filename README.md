@@ -79,6 +79,8 @@ _Tools and **Vivecoded** apps_
 
 [Tenisdemesa.ar](https://tenisdemesa.ar): A site to track local tournament and places to play Table Tennis.
 
+[sshya](https://www.npmjs.com/package/sshya): CLI for managing SSH connections with aliases, interactive prompts, and fzf integration.
+
 ### Reach me out:
 
 [juan@zic.ar](mailto:juan@zic.ar) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)

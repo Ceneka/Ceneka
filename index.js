@@ -199,8 +199,23 @@ function parseExperienceTimeline(markdown, inline) {
                 descLines.push(line);
             }
         }
-        // Merge consecutive lines into paragraphs by blank lines
-        const paragraphs = descLines.join('\n').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+        const paragraphs = [];
+        let proseBuffer = [];
+        const flushProse = () => {
+            if (proseBuffer.length) {
+                paragraphs.push(proseBuffer.join(' '));
+                proseBuffer = [];
+            }
+        };
+        for (const line of descLines) {
+            if (/^\[.+\]\(.+\):/.test(line)) {
+                flushProse();
+                paragraphs.push(line);
+            } else {
+                proseBuffer.push(line);
+            }
+        }
+        flushProse();
         html += `<div class="timeline-item"><div class="card timeline-card">`;
         html += `<h4>${inline(titleLine)}</h4>`;
         if (period) html += `<p class="period"><em>${inline(period)}</em></p>`;
