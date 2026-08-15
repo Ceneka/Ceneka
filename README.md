@@ -8,11 +8,11 @@ Hi there 👋👋! I’m Juan, a Full Stack web developer from La Plata, Provinc
 
 Nowadays, I mainly work planning, developing, deploying and maintaining Apps, Websites and Games with technologies and tools like React, NextJS, Node, TypeScript, MariaDB/MySQL, Redis, Google Cloud Platform, Docker among others.
 
-I thrive across the full stack - from infrastructure to polished frontends. I enjoy planning systems end‑to‑end, provisioning Linux VMs and cloud resources (GCP, AWS), containerizing with Docker, automating CI/CD and zero‑downtime deployments, wiring logs/metrics/alerts for real observability, and running reliable self‑hosted setups when it makes sense. On the frontend, I obsess over performance and delightful UX (especially game‑like interfaces), turning complex real‑time behavior into fast, intuitive experiences. I’m hands‑on, pragmatic, and collaborative - owning outcomes, removing blockers, and raising the bar for the team.
+I work the full stack: planning systems, provisioning Linux VMs and cloud (GCP, AWS), Docker, CI/CD, zero-downtime deploys, and logs/metrics/alerts. I also run self-hosted setups when that fits. On the frontend I spend a lot of time on performance, especially real-time and game-like interfaces.
 
 ### Main Skills:
 
-*   **Programing Languages:** JavaScript, TypeScript, PHP, Java, Python
+*   **Programming Languages:** JavaScript, TypeScript, PHP, Java, Python
 *   **Technologies:** React, NodeJS, Express, NextJS, Laravel, Livewire, Tailwind, MariaDB/MySQL, Redis, Websocket, Docker, Google Cloud Platform, Bash, Linux, Git, CSS, Jira, Analytics, Angular
 *   **AI & Agentic Tools:** Cursor, Claude, agentic workflows, local inference
 *   **Languages:** English (B2), Spanish (native)
@@ -23,9 +23,9 @@ I thrive across the full stack - from infrastructure to polished frontends. I en
 
 _May 2023 – Present_  
 
-I contributed to a fintech startup dedicated to enabling worldwide donations through innovative and scalable solutions. In this role, I developed and maintained secure, efficient web applications using Laravel and Livewire, while spearheading DevOps initiatives - including Docker-based containerization, Linux server administration, and managing AWS VMs and services - to ensure seamless deployments. Also I did maintenance and improvements in services made in Java/Spring.
+I contributed to a fintech startup for worldwide donations. I built and maintained Laravel and Livewire apps, and took on DevOps: Docker, Linux servers, and AWS VMs and services. I also maintained and improved Java/Spring services.
 
-Additionally, I collaborated on modernizing legacy systems by integrating new technologies that enhanced reliability and adaptability. I also played an active role in project planning, participated in code reviews, and mentored team members, all while providing tailored consulting services from system architecture design to deployment and optimization strategies.
+I helped modernize older systems, joined planning and code reviews, and mentored teammates. Consulting went from architecture to deployment.
 
 #### **Senior Software Engineering / Tech Leader at DChess (dchess.net)**
 
@@ -33,7 +33,7 @@ _September 2021 - May 2023 (1 year 9 months)_
 
 Initially, I was responsible for the entire platform architecture design and software development and deployment. It consists of real-time Chess games, with live spectator mode, tournaments, duels, consumables, shop, internal marketplace, integration with Web3.
 
-I developed the Frontend with React and chess.js, with a 4ms re-render time per move, achieving an excellent and fast gaming experience even on outdated mobile devices. I used websocket to connect the client to a stateless server (that can scale automatically) and keep states of the games in a Redis instance.
+I developed the Frontend with React and chess.js, with a 4ms re-render time per move, so it stays fast even on old phones. I used websocket to connect the client to a stateless server (that can scale automatically) and keep states of the games in a Redis instance.
 
 I managed all the monitoring and got involved in the feedback from users. I also helped on the hiring processes of new developers to join the team, doing some training, delegating and collaborating with them and reviewing their job.
 
@@ -61,9 +61,9 @@ Examples: [My Tower, My Home](https://store.steampowered.com/app/435600/My_Tower
 
 _March 2007 - Present_
 
-I created numerous landing pages and blogs using WordPress, developed custom plugins, and consistently maintained and optimized these sites. I also built administrative software for an educational institution that streamlined student management, monitored debtor activity, and facilitated effective communication with parents.
+I built WordPress landing pages and blogs, including custom plugins, and kept those sites updated. I also built admin software for a school: student records, debtors, and messages to parents.
 
-In addition, I provide ongoing maintenance for live sites - including WordPress, OJS, and custom platforms - ensuring they remain secure and up-to-date. My work involves recovering sites from hacks, performing regular upgrades, and implementing proactive measures to maintain optimal performance and reliability.
+I still maintain live sites — WordPress, OJS, and custom platforms. That includes updates, security, and recovering sites after hacks.
 
 Examples: [MiCorazonDeTiza](https://micorazondetiza.com/) | [Lajsba | OJS](https://lajsba.sedimentologia.org.ar) | [Serpientes Argentinas](https://serpientesarg.com/) | [Sistema Administrativo Escolar](https://sapie.com.ar)
 
@@ -75,12 +75,12 @@ _Tools and **Vivecoded** apps_
 
 [ElTruco.ar](https://eltruco.ar): A fast, free Truco score counter, vivecoded through the full flow from prompt to production.
 
-[LazyBackup](https://github.com/Ceneka/lazybackup/): web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.a web-based application for managing backups of your VPS servers. It allows you to configure and schedule backups using SSH and Rsync, and provides a dashboard to monitor the status of your backups.
+[LazyBackup](https://github.com/Ceneka/lazybackup/): web app for VPS backups over SSH and Rsync, with a dashboard for schedules and status.
 
 [Tenisdemesa.ar](https://tenisdemesa.ar): A site to track local tournament and places to play Table Tennis.
 
 [sshya](https://www.npmjs.com/package/sshya): CLI for managing SSH connections with aliases, interactive prompts, and fzf integration.
 
-### Reach me out:
+### Reach out:
 
 [juan@zic.ar](mailto:juan@zic.ar) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)

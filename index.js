@@ -37,14 +37,14 @@ function parseHero(markdown) {
         role = (parts[1] || '').trim();
     }
 
-    // Collect contact links from the next few lines and from Reach me out section
+    // Collect contact links from the next few lines and from Reach out section
     const contactCandidates = [];
     for (let i = headerIndex + 1; i < Math.min(lines.length, headerIndex + 6); i++) {
         if (!lines[i]) continue;
         if (/(\[.+?\]\(.+?\))/.test(lines[i])) contactCandidates.push(lines[i]);
     }
-    // Add Reach me out section lines if present
-    const reachSectionMatch = markdown.match(/###\s+Reach me out:[\s\S]*?$/m);
+    // Add Reach out section lines if present
+    const reachSectionMatch = markdown.match(/###\s+Reach out:[\s\S]*?$/m);
     if (reachSectionMatch) {
         const reachLines = reachSectionMatch[0].split('\n').slice(1);
         contactCandidates.push(...reachLines);
@@ -78,7 +78,7 @@ function parseHero(markdown) {
 async function fetchAiResume(markdown) {
     if (process.env?.LLM_DISABLE === "true" || process.env?.LLM_DISABLE === "1") {
         console.warn("AI resume skipped: LLM_DISABLE detected");
-        return "Seasoned full-stack engineer delivering scalable web products across frontend and backend, focused on reliability and clear, maintainable code.";
+        return "Full-stack web developer from La Plata, Argentina. Apps, sites, and games — React, Node, TypeScript, PHP, Docker, GCP/AWS.";
     }
 
     if (!process.env.LLM_TOKEN) {
@@ -100,7 +100,7 @@ async function fetchAiResume(markdown) {
             messages: [
                 {
                     role: "system",
-                    content: "You write concise, confident resume summaries in 2-3 sentences. Mention role, standout expertise, and recent impact. Keep it HTML-safe, no Markdown, no code blocks.",
+                    content: "Write 2-3 short sentences in first person, dry and factual. Use only details from the profile. No slogans, no soft skills, no words like thrive, passionate, seamless, or leveraging. HTML-safe, no Markdown, no code blocks.",
                 },
                 {
                     role: "user",
@@ -127,18 +127,15 @@ function buildAiResumeSection(aiText) {
 
     if (!paragraphs) return '';
 
-    const model = process.env.LLM_MODEL ? escapeHtml(process.env.LLM_MODEL) : 'an LLM';
-
     return `
 <section class="ai-resume" id="ai-resume">
   <div class="container">
     <div class="ai-resume-inner">
       <div class="ai-resume-head">
         <span class="ai-chip">AI summary</span>
-        <span class="ai-q">"summarize this CV for busy recruiters"</span>
       </div>
       <div class="ai-resume-body">${paragraphs}</div>
-      <div class="ai-note">// generated at build time by ${model} — rebuilt on every deploy, reviewed by the human</div>
+      <div class="ai-note">// generated at build time from this README</div>
     </div>
   </div>
 </section>`;
@@ -242,7 +239,6 @@ function buildHeroHTML(hero) {
       <div class="hero-actions">${actions}</div>
       <div class="hero-badges">
         <span class="badge"><span class="pulse-dot"></span>Shipping for 20+ years</span>
-        <span class="badge badge-ai">✦ LLM-assisted, human-approved</span>
       </div>
     </div>
   </div>
@@ -256,11 +252,11 @@ function stripSections(markdown) {
     md = md.replace(/^##\s+.*$/m, '');
     // Remove the next line if it contains links ([ \t]* so it can't cross newlines and eat headings)
     md = md.replace(/^[ \t]*\[.*\)[ \t]*(\|.*\))?.*$/m, '');
-    // Remove About, Main Skills, Experience, Reach me out sections
+    // Remove About, Main Skills, Experience, Reach out sections
     md = md.replace(/###\s+About me:[\s\S]*?(?=\n###|\n$)/, '');
     md = md.replace(/###\s+Main Skills:[\s\S]*?(?=\n###|\n$)/, '');
     md = md.replace(/###\s+Experience:[\s\S]*?(?=\n###\s|\s*$)/, '');
-    md = md.replace(/###\s+Reach me out:[\s\S]*?(?=\n###|\n$)/, '');
+    md = md.replace(/###\s+Reach out:[\s\S]*?(?=\n###|\n$)/, '');
     return md.trim();
 }
 
