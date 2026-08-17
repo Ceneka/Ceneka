@@ -93,10 +93,17 @@ async function fetchAiResume(markdown) {
         });
 
         const clippedInput = markdown.slice(0, 8000);
+        const endpoint = process.env.LLM_ENDPOINT || '';
+        const model = process.env.LLM_MODEL || '';
+        const isDeepseek = /deepseek/i.test(endpoint) || /deepseek/i.test(model);
+
+        // max_tokens covers hidden reasoning + the visible answer. The prompt
+        // already keeps the summary to 2-3 sentences; a low cap just starves
+        // thinking models and they return empty content.
         const completion = await client.chat.completions.create({
-            model: process.env.LLM_MODEL,
+            model,
             temperature: 0.35,
-            max_tokens: 240,
+            max_tokens: 16384,
             messages: [
                 {
                     role: "system",
@@ -107,9 +114,28 @@ async function fetchAiResume(markdown) {
                     content: `Summarize this profile:\n${clippedInput}`,
                 },
             ],
+            ...(isDeepseek ? {
+                thinking: { type: 'enabled' },
+                reasoning_effort: 'low',
+            } : {}),
         });
 
-        return completion?.choices?.[0]?.message?.content?.trim() || null;
+        const choice = completion?.choices?.[0];
+        const content = choice?.message?.content;
+        const text = Array.isArray(content)
+            ? content.map((part) => (typeof part === 'string' ? part : part?.text || '')).join('').trim()
+            : (typeof content === 'string' ? content.trim() : '');
+
+        if (!text) {
+            console.warn('AI resume skipped: empty model output', {
+                finish_reason: choice?.finish_reason,
+                usage: completion?.usage,
+                has_reasoning: Boolean(choice?.message?.reasoning_content),
+            });
+            return null;
+        }
+
+        return text;
     } catch (err) {
         console.warn("AI resume skipped:", err?.message || err);
         return null;
