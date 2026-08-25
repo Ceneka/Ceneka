@@ -252,8 +252,9 @@ function parseExperienceTimeline(markdown, inline) {
 
 function issuerFromHref(href) {
     if (/freecodecamp\.org/i.test(href)) return 'freeCodeCamp';
+    if (/mercadopago/i.test(href)) return 'Mercado Pago';
     try {
-        return new URL(href).hostname.replace(/^www\./, '');
+        return new URL(href, 'https://zic.ar').hostname.replace(/^www\./, '');
     } catch {
         return '';
     }

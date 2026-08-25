@@ -83,8 +83,9 @@ _Tools and **Vivecoded** apps_
 
 ### Certifications:
 
-[freeCodeCamp](https://www.freecodecamp.org/ceneka) · November 2019
+[freeCodeCamp](https://www.freecodecamp.org/ceneka) · Mercado Pago Developers
 
+*   **[Checkout Pro](certs/mercadopago-checkout-pro.pdf)** — March 22, 2021
 *   **[Responsive Web Design](https://www.freecodecamp.org/certification/ceneka/responsive-web-design)** — November 12, 2019
 *   **[JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/certification/ceneka/javascript-algorithms-and-data-structures)** — November 9, 2019
 

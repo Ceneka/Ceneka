@@ -805,7 +805,7 @@
 
         .certs {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1rem;
         }
 
@@ -864,6 +864,11 @@
 
         .cert-card:hover .cert-verify {
             color: var(--cyan);
+        }
+
+        a.cert-card[href$='.pdf'] .cert-verify::after {
+            -webkit-mask: var(--i-dl) center / contain no-repeat;
+            mask: var(--i-dl) center / contain no-repeat;
         }
 
         /* ============ Links (content) ============ */
