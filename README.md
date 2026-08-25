@@ -81,6 +81,13 @@ _Tools and **Vivecoded** apps_
 
 [sshya](https://www.npmjs.com/package/sshya): CLI for managing SSH connections with aliases, interactive prompts, and fzf integration.
 
+### Certifications:
+
+[freeCodeCamp](https://www.freecodecamp.org/ceneka) · November 2019
+
+*   **[Responsive Web Design](https://www.freecodecamp.org/certification/ceneka/responsive-web-design)** — November 12, 2019
+*   **[JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/certification/ceneka/javascript-algorithms-and-data-structures)** — November 9, 2019
+
 ### Reach out:
 
 [juan@zic.ar](mailto:juan@zic.ar) | [LinkedIn.com/in/zic](https://linkedin.com/in/zic) | [zic.ar](https://zic.ar) | [Github.com/ceneka](https://github.com/ceneka)

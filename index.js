@@ -250,6 +250,78 @@ function parseExperienceTimeline(markdown, inline) {
     return html;
 }
 
+function issuerFromHref(href) {
+    if (/freecodecamp\.org/i.test(href)) return 'freeCodeCamp';
+    try {
+        return new URL(href).hostname.replace(/^www\./, '');
+    } catch {
+        return '';
+    }
+}
+
+function parseCertifications(markdown) {
+    const match = markdown.match(/###\s+Certifications:[\s\S]*?(?=\n###\s|\s*$)/);
+    if (!match) return { lead: '', items: [] };
+    const block = match[0].replace(/###\s+Certifications:/, '').trim();
+    const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+    let lead = '';
+    const items = [];
+    for (const line of lines) {
+        const bullet = line.replace(/^\*+\s*/, '');
+        const linked = bullet.match(/^(?:\*\*)?\[([^\]]+)\]\(([^)]+)\)(?:\*\*)?\s*[—–-]\s*(.+)$/);
+        if (line.startsWith('*') && linked) {
+            items.push({
+                title: linked[1],
+                href: linked[2],
+                date: linked[3].replace(/[*_]/g, '').trim(),
+                issuer: issuerFromHref(linked[2]),
+            });
+        } else if (!line.startsWith('*')) {
+            lead += (lead ? ' ' : '') + line;
+        }
+    }
+    return { lead, items };
+}
+
+function buildCertsSectionHTML(certs, inline) {
+    const { lead, items } = certs;
+    if (!items.length) return '';
+    const cards = items.map((item) => {
+        const issuer = item.issuer
+            ? `<span class="cert-issuer">${escapeHtml(item.issuer)}</span>`
+            : '';
+        const date = item.date
+            ? `<p class="period"><em>${escapeHtml(item.date)}</em></p>`
+            : '';
+        return `<a class="card cert-card" href="${escapeHtml(item.href)}">${issuer}<h3>${inline(item.title)}</h3>${date}<span class="cert-verify">View credential</span></a>`;
+    }).join('');
+    const leadHtml = lead
+        ? `<p class="certs-lead">${inline(lead)}</p>`
+        : '';
+    return `
+<section class="section" id="certs">
+  <div class="container">
+    <h2>Certifications</h2>
+    <div class="certs-head">
+      <span class="era-chip">pre-AI era</span>
+      ${leadHtml}
+    </div>
+    <div class="certs">${cards}</div>
+  </div>
+</section>`;
+}
+
+function buildCertsPrintHTML(certs, inline) {
+    const { lead, items } = certs;
+    if (!items.length) return '';
+    const leadHtml = lead ? `<p>${inline(lead)} · pre-AI era</p>` : `<p>pre-AI era</p>`;
+    const list = items.map((item) => {
+        const date = item.date ? ` — ${escapeHtml(item.date)}` : '';
+        return `<li><a href="${escapeHtml(item.href)}">${inline(item.title)}</a>${date}</li>`;
+    }).join('');
+    return `<section class="certs-print"><h3>Certifications</h3>${leadHtml}<ul>${list}</ul></section>`;
+}
+
 // Build Hero HTML
 function buildHeroHTML(hero) {
     const { name, role, aboutSnippet, contactLinks } = hero;
@@ -282,6 +354,7 @@ function stripSections(markdown) {
     md = md.replace(/###\s+About me:[\s\S]*?(?=\n###|\n$)/, '');
     md = md.replace(/###\s+Main Skills:[\s\S]*?(?=\n###|\n$)/, '');
     md = md.replace(/###\s+Experience:[\s\S]*?(?=\n###\s|\s*$)/, '');
+    md = md.replace(/###\s+Certifications:[\s\S]*?(?=\n###\s|\s*$)/, '');
     md = md.replace(/###\s+Reach out:[\s\S]*?(?=\n###|\n$)/, '');
     return md.trim();
 }
@@ -296,6 +369,9 @@ const inline = (text) => renderer.parseInline(text);
 const hero = parseHero(rawReadme);
 const skillsCardsHTML = parseSkillsAsCards(rawReadme);
 const experienceHTML = parseExperienceTimeline(rawReadme, inline);
+const certs = parseCertifications(rawReadme);
+const certsHTML = buildCertsSectionHTML(certs, inline);
+const certsPrintHTML = buildCertsPrintHTML(certs, inline);
 const aiResumeText = await fetchAiResume(rawReadme);
 const aiResumeHTML = buildAiResumeSection(aiResumeText);
 
@@ -331,6 +407,7 @@ ${aiResumeHTML}
     <div class="timeline">${experienceHTML}</div>
   </div>
 </section>
+${certsHTML}
 ${contentSection}
 `;
 
@@ -435,6 +512,7 @@ const printHtml = `<!DOCTYPE html><html lang="en"><head>
     ${aboutSectionHtml ? `<section><h3>About</h3>${aboutSectionHtml}</section>` : ''}
     ${skillsSectionHtml}
     ${experienceHTML ? `<section><h3>Experience</h3>${experienceHTML}</section>` : ''}
+    ${certsPrintHTML}
     ${remainingHtml ? `<hr /><section>${remainingHtml}</section>` : ''}
   </main>
 </div></body></html>`;
